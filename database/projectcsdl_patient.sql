@@ -23,17 +23,21 @@ DROP TABLE IF EXISTS `patient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `patient` (
-  `PatientID` int NOT NULL AUTO_INCREMENT,
-  `FullName` varchar(45) DEFAULT NULL,
-  `IdentityNumber` varchar(45) NOT NULL,
+  `patientID` int NOT NULL AUTO_INCREMENT,
+  `fullName` varchar(45) DEFAULT NULL,
+  `identityNumber` varchar(45) NOT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `gender` char(10) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
-  `roomID` int DEFAULT NULL,
-  `AdmissionDate` date DEFAULT NULL,
-  PRIMARY KEY (`PatientID`),
-  UNIQUE KEY `IdentityNumber_UNIQUE` (`IdentityNumber`),
+  `admissionDate` date DEFAULT NULL,
+  `dischargeDate` date DEFAULT NULL,
+  `roomID` varchar(10) DEFAULT NULL,
+  `peopleID` varchar(10) NOT NULL,
+  PRIMARY KEY (`patientID`),
+  UNIQUE KEY `IdentityNumber_UNIQUE` (`identityNumber`),
   KEY `roomID_idx` (`roomID`),
+  KEY `fk_patient_people1_idx` (`peopleID`),
+  CONSTRAINT `fk_patient_people1` FOREIGN KEY (`peopleID`) REFERENCES `people` (`peopleID`),
   CONSTRAINT `roomID` FOREIGN KEY (`roomID`) REFERENCES `room` (`roomID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -56,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-09 10:18:54
+-- Dump completed on 2023-10-23  0:32:59

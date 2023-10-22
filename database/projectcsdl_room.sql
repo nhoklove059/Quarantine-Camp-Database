@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `room` (
-  `roomID` int NOT NULL,
+  `roomID` varchar(10) NOT NULL,
   `roomType` varchar(45) DEFAULT NULL,
   `buildingID` int DEFAULT NULL,
-  `Capacity` int DEFAULT NULL,
+  `capacity` int DEFAULT NULL,
   PRIMARY KEY (`roomID`),
   KEY `buildingID_idx` (`buildingID`),
   CONSTRAINT `buildingID` FOREIGN KEY (`buildingID`) REFERENCES `building` (`buildingID`)
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-09 10:18:54
+-- Dump completed on 2023-10-23  0:33:00

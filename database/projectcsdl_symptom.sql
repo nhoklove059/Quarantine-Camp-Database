@@ -23,12 +23,13 @@ DROP TABLE IF EXISTS `symptom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `symptom` (
-  `PatientID` int NOT NULL,
+  `patientID` int NOT NULL,
   `symptomsName` varchar(45) DEFAULT NULL,
   `symptomSeverity` varchar(45) DEFAULT NULL,
-  `Timestamp` time DEFAULT NULL,
-  KEY `fk_symptoms_patient1_idx` (`PatientID`),
-  CONSTRAINT `fk_symptoms_patient1` FOREIGN KEY (`PatientID`) REFERENCES `patient` (`PatientID`)
+  `startDate` time DEFAULT NULL,
+  `endDate` time DEFAULT NULL,
+  KEY `fk_symptoms_patient1_idx` (`patientID`),
+  CONSTRAINT `fk_symptoms_patient1` FOREIGN KEY (`patientID`) REFERENCES `patient` (`patientID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-09 10:18:54
+-- Dump completed on 2023-10-23  0:32:59

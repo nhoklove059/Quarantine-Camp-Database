@@ -28,7 +28,7 @@ include("includes/db.php");
                 
                 $_SESSION['admin_email']=$admin_email;
                 
-                echo "<script>alert('You are Logged in into admin panel')</script>";
+                // echo "<script>alert('You are Logged in into admin panel')</script>";
                 
                 header("location: index.php");
                 

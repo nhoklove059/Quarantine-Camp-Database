@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Sign Up</title>
-    <link rel="icon" type="image/png" href="../images/A_logo.png">
+    <link rel="icon" type="image/png" href="../images/SGU.png">
     <link rel="stylesheet" href="./styles/login.css">
 </head>
 <body>
@@ -90,7 +90,7 @@ if(isset($_GET['admin_login'])){
     $_SESSION['admin_email']=$row_employee['people_in_camp_fname']." ".$row_employee['people_in_camp_lname'];
     $_SESSION['admin_job'] = $row_employee['people_in_camp_job_type'];
     
-    echo "<script>alert('You are Logged in into admin panel')</script>";
+   //  echo "<script>alert('You are Logged in into admin panel')</script>";
     echo "<script>window.open('index.php','_self')</script>";
     //header("location: index.php");
     }

@@ -153,7 +153,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`customer_id`, `customer_name`, `customer_email`, `customer_pass`, `customer_country`, `customer_city`, `customer_contact`, `customer_address`, `customer_image`, `customer_ip`, `customer_confirm_code`, `status`) VALUES
-(2, 'aurora', 'aurora@gmail.com', '202cb962ac59075b964b07152d234b70', 'United State', 'New York', '0092334566931', 'new york', 'user.jpg', '::1', '', 'opening'),
+(2, 'SGU', 'SGU@gmail.com', '202cb962ac59075b964b07152d234b70', 'United State', 'New York', '0092334566931', 'new york', 'user.jpg', '::1', '', 'opening'),
 (3, 'Demo Customer', 'demo@customer.com', 'Password123', 'DemoCountry', 'DemoCity', '700000000', 'DemoAddress', 'sample_image.jpg', '::1', '', 'locking'),
 (4, 'Thomas', 'thomas@demo.com', 'Password123', 'One Country', 'One City', '777777777', '23 Nguyen Trai, Ward 5, District 4', 'sample_img360.png', '::1', '1427053935', 'opening'),
 (5, 'Fracis', 'test@customer.com', 'Password123', 'US', 'Demo City', '780000000', '112 Bleck Street', 'userav-min.png', '::1', '1634138674', 'locking'),

@@ -12,8 +12,8 @@ include("includes/header.php");
 	<div id="page" class="page">
 
 		<!--*******************
-        Preloader start
-    ********************-->
+		Preloader start
+	********************-->
 		<!-- <div id="preloader">
 		<div class="sk-three-bounce">
 			<div class="sk-child sk-bounce1"></div>
@@ -22,65 +22,65 @@ include("includes/header.php");
 		</div>
 	</div> -->
 		<!--*******************
-        Preloader end
-    ********************-->
+		Preloader end
+	********************-->
 
 
 		<!--**********************************
-        Main wrapper start
-    ***********************************-->
+		Main wrapper start
+	***********************************-->
 		<div id="main-wrapper">
 
 			<!--**********************************
-            Nav header start
-        ***********************************-->
+			Nav header start
+		***********************************-->
 			<?php
 
 			// include("includes/navhead.php");
-
+			
 			?>
 			<!--**********************************
-            Nav header end
-        ***********************************-->
+			Nav header end
+		***********************************-->
 
 			<!--**********************************
-            Chat box start
-        ***********************************-->
+			Chat box start
+		***********************************-->
 
 			<!--**********************************
-            Chat box End
-        ***********************************-->
+			Chat box End
+		***********************************-->
 
 
 
 
 			<!--**********************************
-            Header start
-        ***********************************-->
+			Header start
+		***********************************-->
 			<?php
 
 			// include("includes/main.php");
-
+			
 			?>
 			<!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
+			Header end ti-comment-alt
+		***********************************-->
 
 			<!--**********************************
-            Sidebar start
-        ***********************************-->
+			Sidebar start
+		***********************************-->
 			<?php
 
 			// include("includes/sidebar.php");
-
+			
 			?>
 			<!--**********************************
-            Sidebar end
-        ***********************************-->
+			Sidebar end
+		***********************************-->
 
 			<!--**********************************
-            Content body start
-        ***********************************-->
+			Content body start
+		***********************************-->
 			<!-- <div class="content-body"> -->
 			<div class="container-fluid">
 				<!-- <div class="page-titles">
@@ -95,22 +95,28 @@ include("includes/header.php");
 
 						<div class="card">
 							<div class="card-header">
-								<strong>AQC</strong>
-								<strong>DATE: 29/11/2022</strong>
+								<strong>SQL Quarantine Camp</strong>
+								<strong>
+									<?php
+									// Lấy ngày hiện tại dưới định dạng 'Y-m-d H:i:s'
+									$currentDate = date('d-m-Y');
+									echo "$currentDate";
+									?>
+								</strong>
 								<span class="float-right">
 									<strong>Status: Warning</strong>
 								</span>
-								<img class="logo-abbr" src="./images/A_logo.png" alt="">
+								<img class="width:10px;" src="./images/SGU.png" alt="">
 							</div>
 
 							<div class="card-body">
 								<div class="row">
 									<div class="col-xl-3 col-sm-6 mb-4">
 										<h6>From:</h6>
-										<div> <strong>Aurora Quarantine Camp</strong> </div>
+										<div> <strong>SGU Quarantine Camp</strong> </div>
 										<div>273 An D. Vương</div>
 										<div>Phường 3, Quận 5, TP.HCM</div>
-										<div>Email: aurora@mail.com</div>
+										<div>Email: SGU@mail.com</div>
 										<div>Phone: +48 444 666 3333</div>
 									</div>
 									<div class="col-xl-3 col-sm-6 mb-4">
@@ -121,7 +127,8 @@ include("includes/header.php");
 										<div>Email: thomas@mail.com</div>
 										<div>Phone: +78 123 456 7891</div>
 									</div>
-									<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4 d-flex justify-content-lg-end justify-content-md-center justify-content-xs-start">
+									<div
+										class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4">
 										<div class="row align-items-center">
 											<div class="col-sm-9">
 												<div class="brand-logo mb-3">
@@ -132,7 +139,7 @@ include("includes/header.php");
 													<strong>Gender: Male</strong></span><br>
 												<!-- <small class="text-muted">Current exchange rate 1BTC = $6590 USD</small> -->
 											</div>
-											<!-- <div class="col-sm-3 mt-3"> <img src="images/A_logo.png" class="img-fluid width110"> </div> -->
+											<!-- <div class="col-sm-3 mt-3"> <img src="images/SGU.png" class="img-fluid width110"> </div> -->
 										</div>
 									</div>
 								</div>
@@ -158,8 +165,10 @@ include("includes/header.php");
 												<td>Luc Le</td>
 												<td>Male</td>
 												<td>Dr. Sammy</td>
-												<td><a href="javascript:void(0);"><strong>+78 123 456 7891</strong></a></td>
-												<td><a href="javascript:void(0);"><strong>Older age, Heart disease</strong></a></td>
+												<td><a href="javascript:void(0);"><strong>+78 123 456 7891</strong></a>
+												</td>
+												<td><a href="javascript:void(0);"><strong>Older age, Heart
+															disease</strong></a></td>
 												<td>Headache</td>
 												<td>21/07/2022</td>
 											</tr>
@@ -249,34 +258,34 @@ include("includes/header.php");
 			</div>
 		</div>
 		<!--**********************************
-            Content body end
-        ***********************************-->
+			Content body end
+		***********************************-->
 
 
 		<!--**********************************
-            Footer start
-        ***********************************-->
+			Footer start
+		***********************************-->
 		<!--**********************************
-            Footer end
-        ***********************************-->
+			Footer end
+		***********************************-->
 
 		<!--**********************************
-           Support ticket button start
-        ***********************************-->
+		   Support ticket button start
+		***********************************-->
 
 		<!--**********************************
-           Support ticket button end
-        ***********************************-->
+		   Support ticket button end
+		***********************************-->
 
 
 	</div>
 	<!--**********************************
-        Main wrapper end
-    ***********************************-->
+		Main wrapper end
+	***********************************-->
 
 	<!--**********************************
-        Scripts
-    ***********************************-->
+		Scripts
+	***********************************-->
 	<!-- Required vendors -->
 	<script src="./vendor/global/global.min.js"></script>
 	<script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>

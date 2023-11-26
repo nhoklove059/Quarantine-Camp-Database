@@ -51,7 +51,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-md-8 offset-md-2">
-                        <p>© 2022 Design by <a href=""> AURORA</a></p>
+                        <p>© 2022 Design by <a href=""> SGU</a></p>
                      </div>
                   </div>
                </div>

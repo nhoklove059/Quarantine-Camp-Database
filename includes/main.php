@@ -5,8 +5,8 @@
 
     <div class="hero">
         <nav>
-        <img src="images/A_logo.png" class="logo">
-        <h2 class="logo-text">AURORA QUARANTINE CAMP</h2>
+        <img src="images/SGU.png" class="logo">
+        <h2 class="logo-text">SGU QUARANTINE CAMP</h2>
             <ul>
                 <li> <a href="index.php"> HOME </a></li>
                 <li> <a href="declaration.php"> DECLARATION </a></li>

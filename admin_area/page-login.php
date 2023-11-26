@@ -17,7 +17,7 @@ include("includes/header.php");
 									<div class="text-center mb-3">
 										<a href="index.html"><img src="images/logo-full.png" alt=""></a>
 									</div>
-                                    <h4 class="text-center mb-4 text-white">Aurora Quarantine Camp</h4>
+                                    <h4 class="text-center mb-4 text-white">SGU Quarantine Camp</h4>
                                     <form method = "post" action="page-login.php">
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Username</strong></label>
@@ -85,7 +85,7 @@ if(isset($_POST['admin_login'])){
         session_start();
     $_SESSION['admin_email']=$row_employee['people_in_camp_fname']." ".$row_employee['people_in_camp_lname'];
     
-    echo "<script>alert('You are Logged in into admin panel')</script>";
+    // echo "<script>alert('You are Logged in into admin panel')</script>";
     echo "<script>window.open('index.php','_self')</script>";
     //header("location: index.php");
     }

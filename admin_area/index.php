@@ -81,7 +81,7 @@ include("check.php");
 				<div class="form-head d-flex align-items-center mb-sm-4 mb-3">
 					<div class="mr-auto">
 						<h2 class="text-black font-w600">Dashboard</h2>
-						<p class="mb-0">Aurora Camp</p>
+						<p class="mb-0">SGU Camp</p>
 					</div>
 				</div>
 				<div class="row">
@@ -155,7 +155,7 @@ include("check.php");
 							</div>
 						</div>
 					</div>
-					<div class="col-xl-3  col-sm-6">
+					<!-- <div class="col-xl-3  col-sm-6">
 						<div class="card">
 							<div class="card-body">
 								<div class="media align-items-center">
@@ -173,7 +173,7 @@ include("check.php");
 									<span class="sr-only">94% Complete</span>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="row">

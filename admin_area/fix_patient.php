@@ -29,7 +29,7 @@ if(isset($_GET['patient_id'])){
         $sql = "UPDATE `patient` SET `fname`='".$fname."' WHERE patient_id =".$patient_id;
             if (mysqli_query($conn, $sql)){
                 // echo "<script>alert('Successfully edited')</script>";
-                // echo "<script>window.open('ecom-checkout.php?patient_id=".$patient_id."','_self')</script>";
+                // echo "<script>window.open('report.php?patient_id=".$patient_id."','_self')</script>";
             }
              else{
             //Hiện thông báo khi không thành công
@@ -42,7 +42,7 @@ if(isset($_GET['patient_id'])){
         $sql = "UPDATE `patient` SET `lname`='".$lname."' WHERE patient_id =".$patient_id;
             if (mysqli_query($conn, $sql)){
                 // echo "<script>alert('Successfully edited')</script>";
-                // echo "<script>window.open('ecom-checkout.php?patient_id=".$patient_id."','_self')</script>";
+                // echo "<script>window.open('report.php?patient_id=".$patient_id."','_self')</script>";
             }
              else{
             //Hiện thông báo khi không thành công
@@ -55,7 +55,7 @@ if(isset($_GET['patient_id'])){
         $sql = "UPDATE `patient` SET `gender`='".$gender."' WHERE patient_id =".$patient_id;
             if (mysqli_query($conn, $sql)){
                 // echo "<script>alert('Successfully edited')</script>";
-                // echo "<script>window.open('ecom-checkout.php?patient_id=".$patient_id."','_self')</script>";
+                // echo "<script>window.open('report.php?patient_id=".$patient_id."','_self')</script>";
             }
              else{
             //Hiện thông báo khi không thành công
@@ -68,7 +68,7 @@ if(isset($_GET['patient_id'])){
         $sql = "UPDATE `patient` SET `phone`='".$phone."' WHERE patient_id =".$patient_id;
             if (mysqli_query($conn, $sql)){
                 // echo "<script>alert('Successfully edited')</script>";
-                // echo "<script>window.open('ecom-checkout.php?patient_id=".$patient_id."','_self')</script>";
+                // echo "<script>window.open('report.php?patient_id=".$patient_id."','_self')</script>";
             }
              else{
             //Hiện thông báo khi không thành công
@@ -81,7 +81,7 @@ if(isset($_GET['patient_id'])){
         $sql = "UPDATE `patient` SET `address`='".$address."' WHERE patient_id =".$patient_id;
             if (mysqli_query($conn, $sql)){
                 // echo "<script>alert('Successfully edited')</script>";
-                // echo "<script>window.open('ecom-checkout.php?patient_id=".$patient_id."','_self')</script>";
+                // echo "<script>window.open('report.php?patient_id=".$patient_id."','_self')</script>";
             }
              else{
             //Hiện thông báo khi không thành công
@@ -89,7 +89,7 @@ if(isset($_GET['patient_id'])){
              }
       }
       echo "<script>alert('Successfully edited')</script>";
-      echo "<script>window.open('ecom-checkout.php?patient_id=".$patient_id."','_self')</script>";
+      echo "<script>window.open('report.php?patient_id=".$patient_id."','_self')</script>";
 
     } else{
         echo "0 results";

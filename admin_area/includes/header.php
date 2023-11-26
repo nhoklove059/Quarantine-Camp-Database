@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Aurora Quarantine Camp</title>
+    <title>SGU Quarantine Camp</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/A_logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/SGU.png">
     <!-- Datatable -->
     <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Custom Stylesheet -->

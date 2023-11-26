@@ -375,7 +375,7 @@ include("check.php");
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="http://localhost/B01-3/admin_area/ecom-checkout.php?patient_id=<?php echo $row["patient_id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                        <a href="http://localhost/B01-3/admin_area/report.php?patient_id=<?php echo $row["patient_id"]; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                                         <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
 
                                         <div class="dropdown ml-auto text-right">
@@ -389,7 +389,7 @@ include("check.php");
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" href="patient-details.php?people_id=<?php echo $row["patient_id"]; ?>"> View Detail</a>
                                                 <a class="dropdown-item" href="test-covid.php?people_id=<?php echo $row["patient_id"]; ?>">Show all tests</a>
-                                                <a class="dropdown-item" href="ecom-checkout.php?patient_id=<?php echo $row["patient_id"]; ?>&prescription=">Prescription</a>
+                                                <a class="dropdown-item" href="report.php?patient_id=<?php echo $row["patient_id"]; ?>&prescription=">Prescription</a>
                                                 <a class="dropdown-item" href="patient-details.php?people_id=<?php echo $row["patient_id"]; ?>&discharge_from_hospital=">Discharge from hospital</a>
                                             </div>
                                         </div>

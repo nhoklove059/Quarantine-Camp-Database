@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect("localhost","root","Nhoklove059_","quarantine_camp");
+$conn = mysqli_connect("localhost","root","","projectcsdl");
 
 ?>

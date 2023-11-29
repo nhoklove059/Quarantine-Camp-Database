@@ -4,7 +4,7 @@ session_start();
 
 include("includes/db.php");
 include("includes/header.php");
-include("check.php");
+
 
 ?>
 
@@ -446,7 +446,7 @@ include("check.php");
 												<tr>
 													<td>
 														<div class="d-flex">
-															<img src="images/Huy.jpg" alt="" class="img-2 mr-3">
+															<img src="images/1.jpg" alt="" class="img-2 mr-3">
 															<div>
 																<h6 class="fs-16 mb-1"><a href="patient.php"
 																		class="text-black">Huy</a></h6>
@@ -473,7 +473,7 @@ include("check.php");
 												<tr>
 													<td>
 														<div class="d-flex">
-															<img src="images/nam.png" alt="" class="img-2 mr-3">
+															<img src="images/1.jpg" alt="" class="img-2 mr-3">
 															<div>
 																<h6 class="fs-16 mb-1"><a href="patient.php"
 																		class="text-black">Nam</a></h6>
@@ -501,7 +501,7 @@ include("check.php");
 												<tr>
 													<td>
 														<div class="d-flex">
-															<img src="images/nhan.png" alt="" class="img-2 mr-3">
+															<img src="images/1.jpg" alt="" class="img-2 mr-3">
 															<div>
 																<h6 class="fs-16 mb-1"><a href="patient.php"
 																		class="text-black">Nhân</a></h6>

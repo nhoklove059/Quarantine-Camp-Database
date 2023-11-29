@@ -4,7 +4,7 @@ session_start();
 
 include("includes/db.php");
 include("includes/header.php");
-include("check.php");
+
 if (isset($_GET['patientID'])) {
 	$patient_id = $_GET['patientID'];
 	$sql_id = "SELECT * FROM patient WHERE patientID = " . $patient_id;
@@ -126,7 +126,7 @@ if (isset($_GET['patientID'])) {
 												<div class="card-body">
 													<div class="d-sm-flex mb-3">
 														<div class="img-card mb-sm-0 mb-3">
-															<img src="images\huy.jpg" alt="">
+															<img src="images\1.jpg" alt="">
 															<div class="info d-flex align-items-center p-md-3 p-2 bg-primary">
 																<svg class="mr-3 d-sm-inline-block d-none" width="30" height="30"
 																	viewBox="0 0 30 30" fill="none"

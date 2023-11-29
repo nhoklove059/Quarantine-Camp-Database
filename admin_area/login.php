@@ -20,7 +20,7 @@
             <form method="get" action="login.php">
                <div class="signin">
                   <h1 class="sign-title">Sign In</h1>
-                  <input type="text" name="people_id" class="sinput" placeholder="Username" required>
+                  <input type="text" name="username" class="sinput" placeholder="Username" required>
                   <input type="password" name="password" class="sinput" placeholder="Passwords" required>
                   <!-- <input type="submit" name="admin_login" value= "Log In" class="form-submit" > -->
                   <button type="submit" class="form-submit" name="admin_login">Sign In</button>
@@ -75,25 +75,25 @@
    include("includes/db.php");
 
    if (isset($_GET['admin_login'])) {
-      $admin_email = mysqli_real_escape_string($conn, $_GET['people_id']);
+      $admin_email = mysqli_real_escape_string($conn1, $_GET['username']);
 
-      $admin_pass = mysqli_real_escape_string($conn, $_GET['password']);
+      $admin_pass = mysqli_real_escape_string($conn1, $_GET['password']);
 
       //  $get_admin = "select * from `people_in_camp` where people_in_camp_id='$admin_email' AND password=md5('$admin_pass')";
    
-      $get_admin = "select * from `people_in_camp` where people_in_camp_id='$admin_email' AND password='$admin_pass'";
-      $run_admin = mysqli_query($conn, $get_admin);
+      $get_admin = "select * from `people` where username='$admin_email' AND password='$admin_pass'";
+      $run_admin = mysqli_query($conn1, $get_admin);
 
       $count = mysqli_num_rows($run_admin);
 
       $row_employee = mysqli_fetch_array($run_admin);
       if ($count == 1) {
          session_start();
-         $_SESSION['admin_id'] = $row_employee['people_in_camp_id'];
-         $_SESSION['admin_email'] = $row_employee['people_in_camp_fname'] . " " . $row_employee['people_in_camp_lname'];
-         $_SESSION['admin_job'] = $row_employee['people_in_camp_job_type'];
+         $_SESSION['admin_id'] = $row_employee['peopleID'];
+         $_SESSION['admin_email'] = $row_employee['fullName'];
+         $_SESSION['admin_job'] = $row_employee['role'];
 
-         //  echo "<script>alert('You are Logged in into admin panel')</script>";
+         // echo "<script>alert('You are Logged in into admin panel')</script>";
          echo "<script>window.open('index.php','_self')</script>";
          //header("location: index.php");
       } else {

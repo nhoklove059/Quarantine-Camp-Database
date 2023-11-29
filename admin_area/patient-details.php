@@ -450,7 +450,6 @@ if (isset($_GET['patientID'])) {
 													<tr>
 														<th>Test ID</th>
 														<th>Patient ID</th>
-														<th>People ID</th>
 														<th>Test Date</th>
 														<th>Status</th>
 														<th>PCR Test</th>
@@ -479,20 +478,21 @@ if (isset($_GET['patientID'])) {
 																	<?php echo $row_test['testTime'] ?>
 																</td>
 																<?php
-																switch ($row_test['result']) {
-																	case 'Positive':
-																		?>
-																		<td><span class="badge light badge-danger">Positive</span></td>
-																		<?php
-																		break;
-																	case 'Negative':
-																		?>
-																		<td><span class="badge light badge-success">Negative</span></td>
-																		<?php
-																		break;
-																	default:
-																		# code...
-																		break;
+
+																if($row_test['SPO2_percentage'] < 96 && $row_test['Respiratory_rate'] > 20) {
+																	?>
+																		<td><span class="badge light badge-danger">Warning</span></td>
+																	<?php
+																}
+																else if($row_test['PCR_test_value'] > 30 || $row_test['quick_test_value'] > 30) {
+																	?>
+																		<td><span class="badge light badge-success">Discharge</span></td>
+																	<?php
+																}
+																else {
+																	?>
+																		<td><span class="badge light badge-danger">Wait for test</span></td>
+																	<?php
 																}
 																?>
 

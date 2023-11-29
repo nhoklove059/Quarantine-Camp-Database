@@ -122,11 +122,11 @@ if (isset($_GET['people_id'])) {
 									<div class="row">
 										<div class="col-xl-12">
 											<div class="card details-card">
-												<img src="images/bg.jpg" alt="" class="bg-img">
+												<img src="images\patient_background.jpg" alt="" class="bg-img">
 												<div class="card-body">
 													<div class="d-sm-flex mb-3">
 														<div class="img-card mb-sm-0 mb-3">
-															<img src="images/profile/2.png" alt="">
+															<img src="images\huy.jpg" alt="">
 															<div class="info d-flex align-items-center p-md-3 p-2 bg-primary">
 																<svg class="mr-3 d-sm-inline-block d-none" width="30" height="30"
 																	viewBox="0 0 30 30" fill="none"
@@ -193,12 +193,15 @@ if (isset($_GET['people_id'])) {
 													</div>
 													<h4 class="fs-20 text-black font-w600">Story About Disease</h4>
 													<p>
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-														tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-														quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-														consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-														cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-														non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+														My experiences, along with the combined testimonies of trans and rare
+														disease patients around the world, prove a throughline within medicine that
+														I believe is getting in the way of a healthier experience for everyone: that
+														medical professionals are too often on auto-pilot, looking for horses when
+														faced with zebras, and not willing enough to learn from their patients’
+														self-reported experiences. I would go as far as to add that those with the
+														specialized knowledge necessary to diagnose rare diseases are seemingly even
+														less likely to have an up-to-date education on bedside manner that is
+														inclusive of trans and gender-nonconforming people.
 													</p>
 
 												</div>
@@ -220,14 +223,14 @@ if (isset($_GET['people_id'])) {
 																</div>
 															</div>
 														</div>
-														<div class="col-sm-5">
+														<!-- <div class="col-sm-5">
 															<div class="map-bx">
 																<img src="images/map.jpg" alt="">
 																<a href="javascript:void(0)"
 																	class="btn btn-sm btn-primary p-1 fs-12">View in Fullscreen</a>
 																<i class="las la-map-marker"></i>
 															</div>
-														</div>
+														</div> -->
 													</div>
 												</div>
 											</div>
@@ -425,10 +428,7 @@ if (isset($_GET['people_id'])) {
 													</a>
 												</div>
 												<div class="card-body pt-3">
-													<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-														eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-														veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-														commodo consequa</p>
+													<p class="mb-0">Bị gay nặng</p>
 												</div>
 											</div>
 										</div>

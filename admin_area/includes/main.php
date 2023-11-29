@@ -176,7 +176,7 @@
 										<span class="text-black">Hello,<strong>Franklin</strong></span>
 										<p class="fs-12 mb-0">Super Admin</p>
 									</div> -->
-                                    <img src="images/profile/17.jpg" width="20" alt=""/>
+                                    <img src="images\user-profile-min.png" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="./app-profile.php" class="dropdown-item ai-icon">

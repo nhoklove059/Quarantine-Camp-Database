@@ -7,8 +7,8 @@ include("includes/header.php");
 include("check.php");
 if (isset($_GET['people_id'])) {
 	$patient_id = $_GET['people_id'];
-	$sql_id = "SELECT * FROM patient WHERE patient_id = " . $patient_id;
-	$result_id = mysqli_query($conn, $sql_id);
+	$sql_id = "SELECT * FROM patient WHERE patientID = " . $patient_id;
+	$result_id = mysqli_query($conn1, $sql_id);
 	if (mysqli_num_rows($result_id) > 0) {
 		while ($row = mysqli_fetch_assoc($result_id)) {
 
@@ -122,11 +122,11 @@ if (isset($_GET['people_id'])) {
 									<div class="row">
 										<div class="col-xl-12">
 											<div class="card details-card">
-												<img src="images/bg.jpg" alt="" class="bg-img">
+												<img src="images\patient_background.jpg" alt="" class="bg-img">
 												<div class="card-body">
 													<div class="d-sm-flex mb-3">
 														<div class="img-card mb-sm-0 mb-3">
-															<img src="images/profile/2.png" alt="">
+															<img src="images\huy.jpg" alt="">
 															<div class="info d-flex align-items-center p-md-3 p-2 bg-primary">
 																<svg class="mr-3 d-sm-inline-block d-none" width="30" height="30"
 																	viewBox="0 0 30 30" fill="none"
@@ -144,7 +144,7 @@ if (isset($_GET['people_id'])) {
 														<div class="card-info d-flex align-items-start">
 															<div class="mr-auto pr-3">
 																<h2 class="font-w600 mb-2 text-black">
-																	<?php echo $row['fname'] . " " . $row['lname']; ?>
+																	<?php echo $row['fullName']; ?>
 																</h2>
 																<p class="mb-2">#P-
 																	<?php echo $patient_id ?>
@@ -152,13 +152,13 @@ if (isset($_GET['people_id'])) {
 
 																<p class="mb-2">symptom:
 																	<?php
-																	$sql_patient_symptom = "SELECT * FROM patient_symptom WHERE patient_id = " . $patient_id;
-																	$result_patient_symptom = mysqli_query($conn, $sql_patient_symptom);
+																	$sql_patient_symptom = "SELECT * FROM symptom WHERE patientId = " . $patient_id;
+																	$result_patient_symptom = mysqli_query($conn1, $sql_patient_symptom);
 																	if (mysqli_num_rows($result_patient_symptom) > 0) {
 																		$num = mysqli_num_rows($result_patient_symptom);
 																		$i = 0;
 																		while ($row_patient_symptom = mysqli_fetch_assoc($result_patient_symptom)) {
-																			echo $row_patient_symptom['symptom'];
+																			echo $row_patient_symptom['symptomsName'];
 																			$i++;
 																			if ($num > $i) {
 																				echo ", ";
@@ -170,13 +170,13 @@ if (isset($_GET['people_id'])) {
 
 																<p class="mb-2">Comorbidity:
 																	<?php
-																	$sql_patient_comorbidity = "SELECT * FROM patient_comorbidity WHERE patient_id = " . $patient_id;
-																	$result_patient_comorbidity = mysqli_query($conn, $sql_patient_comorbidity);
+																	$sql_patient_comorbidity = "SELECT * FROM comorbidities WHERE patientID = " . $patient_id;
+																	$result_patient_comorbidity = mysqli_query($conn1, $sql_patient_comorbidity);
 																	if (mysqli_num_rows($result_patient_comorbidity) > 0) {
 																		$num = mysqli_num_rows($result_patient_comorbidity);
 																		$i = 0;
 																		while ($row_patient_comorbidity = mysqli_fetch_assoc($result_patient_comorbidity)) {
-																			echo $row_patient_comorbidity['comorbidity'];
+																			echo $row_patient_comorbidity['comorbidityName'];
 																			$i++;
 																			if ($num > $i) {
 																				echo ", ";
@@ -193,12 +193,15 @@ if (isset($_GET['people_id'])) {
 													</div>
 													<h4 class="fs-20 text-black font-w600">Story About Disease</h4>
 													<p>
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-														tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-														quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-														consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-														cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-														non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+														My experiences, along with the combined testimonies of trans and rare
+														disease patients around the world, prove a throughline within medicine that
+														I believe is getting in the way of a healthier experience for everyone: that
+														medical professionals are too often on auto-pilot, looking for horses when
+														faced with zebras, and not willing enough to learn from their patients’
+														self-reported experiences. I would go as far as to add that those with the
+														specialized knowledge necessary to diagnose rare diseases are seemingly even
+														less likely to have an up-to-date education on bedside manner that is
+														inclusive of trans and gender-nonconforming people.
 													</p>
 
 												</div>
@@ -220,14 +223,14 @@ if (isset($_GET['people_id'])) {
 																</div>
 															</div>
 														</div>
-														<div class="col-sm-5">
+														<!-- <div class="col-sm-5">
 															<div class="map-bx">
 																<img src="images/map.jpg" alt="">
 																<a href="javascript:void(0)"
 																	class="btn btn-sm btn-primary p-1 fs-12">View in Fullscreen</a>
 																<i class="las la-map-marker"></i>
 															</div>
-														</div>
+														</div> -->
 													</div>
 												</div>
 											</div>
@@ -425,10 +428,7 @@ if (isset($_GET['people_id'])) {
 													</a>
 												</div>
 												<div class="card-body pt-3">
-													<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-														eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-														veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-														commodo consequa</p>
+													<p class="mb-0">Bị gay nặng</p>
 												</div>
 											</div>
 										</div>
@@ -440,7 +440,7 @@ if (isset($_GET['people_id'])) {
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">Tesing</h4>
+										<h4 class="card-title">Testing</h4>
 
 									</div>
 									<div class="card-body">
@@ -463,7 +463,7 @@ if (isset($_GET['people_id'])) {
 												$sql_test = "SELECT * FROM `test` INNER JOIN `test_covid` ON test.test_id=test_covid.test_id
 							INNER JOIN `people_in_camp` ON test.employee_id=people_in_camp.people_in_camp_id
 							WHERE patient_id = " . $patient_id;
-												$result_test = mysqli_query($conn, $sql_test);
+												$result_test = mysqli_query($conn1, $sql_test);
 												if (mysqli_num_rows($result_test) > 0) {
 													while ($row_test = mysqli_fetch_assoc($result_test)) {
 														?>
@@ -558,7 +558,7 @@ if (isset($_GET['people_id'])) {
 												$sql_traetment = "SELECT * FROM `treatment`
 							INNER JOIN people_in_camp ON treatment.doctor_id = people_in_camp.people_in_camp_id
 							INNER JOIN patient ON `treatment`.`patient_id` = `patient`.`patient_id` WHERE treatment.patient_id =" . $patient_id;
-												$result_treatment = mysqli_query($conn, $sql_traetment);
+												$result_treatment = mysqli_query($conn1, $sql_traetment);
 												if (mysqli_num_rows($result_treatment) > 0) {
 													while ($row_treatment = mysqli_fetch_assoc($result_treatment)) {
 														?>
@@ -640,7 +640,7 @@ if (isset($_GET['people_id'])) {
 							INNER JOIN medicine ON prescription.medicine_id = medicine.medicine_id
 							WHERE prescription.patient_id = " . $patient_id .
 													" ORDER BY `prescription`.`date_prescription` DESC";
-												$result_prescription = mysqli_query($conn, $sql_prescription);
+												$result_prescription = mysqli_query($conn1, $sql_prescription);
 												if (mysqli_num_rows($result_prescription) > 0) {
 													while ($row_prescription = mysqli_fetch_assoc($result_prescription)) {
 														?>
@@ -677,7 +677,7 @@ if (isset($_GET['people_id'])) {
 																		AND prescription.date_prescription = '" . $row_prescription["date_prescription"] . "' 
 																		ORDER BY `prescription`.`date_prescription` DESC";
 																		$total_medicine = 0;
-																		$result_prescription_details = mysqli_query($conn, $sql_prescription_details);
+																		$result_prescription_details = mysqli_query($conn1, $sql_prescription_details);
 																		if (mysqli_num_rows($result_prescription_details) > 0) {
 																			$total_amount_of_materials_used += mysqli_num_rows($result_prescription_details);
 																			while ($row_prescription_details = mysqli_fetch_assoc($result_prescription_details)) {

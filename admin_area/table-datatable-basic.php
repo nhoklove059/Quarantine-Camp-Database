@@ -156,7 +156,7 @@ include("check.php");
                                             if (isset($_GET['status'])) {
                                                 switch ($_GET['status']) {
                                                     case 'all':
-                                                        $sql = "SELECT * FROM patient";
+                                                        $sql = "SELECT * FROM patient WHERE isDeleted is null";
                                                         break;
 
                                                     case 'being_treatment':
@@ -183,7 +183,7 @@ include("check.php");
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo "<tr>";
                                                     echo "<td>" . $row["patientID"] . "</td>";
-                                                    echo "<td><a href='patient-details.php?peopleID=" . $row["patientID"] . "'>" . $row["fullName"] . "</a></td>";
+                                                    echo "<td><a href='patient-details.php?patientID=" . $row["patientID"] . "'>" . $row["fullName"] . "</a></td>";
                                                     echo "<td>" . $row["gender"] . "</td>";
 
                                                     // Doctor Assigned

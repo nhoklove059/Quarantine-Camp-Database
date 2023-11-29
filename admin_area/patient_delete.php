@@ -2,23 +2,19 @@
 include("includes/db.php");
 
 $getPatientID = $_GET["patientID"];
+$sql = "UPDATE `patient` SET `isDeleted` = '1' WHERE `patientID` = '$getPatientID'";
 
-// Delete from the 'treatment' table
-$sql_delete_treatment = "DELETE FROM `treatment` WHERE patientID = '$getPatientID'";
-$result_treatment = mysqli_query($conn, $sql_delete_treatment);
+// Use mysqli_query for query execution
+$result = mysqli_query($conn1, $sql);
 
-// Delete from the 'patient' table
-$sql_delete_patient = "DELETE FROM `patient` WHERE patientID = '$getPatientID'";
-$result_patient = mysqli_query($conn, $sql_delete_patient);
-
-if ($result_treatment && $result_patient) {
+if ($result) {
     // Redirect after successful deletion
     header('Location: table-datatable-basic.php?status=all');
 } else {
     // Handle error, you might want to show an error message or log the error
-    echo "Error: " . mysqli_error($conn);
+    echo "Error: " . mysqli_error($conn1);
 }
 
 // Close the database connection
-mysqli_close($conn);
+mysqli_close($conn1);
 ?>

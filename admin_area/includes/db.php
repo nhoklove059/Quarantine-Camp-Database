@@ -5,4 +5,4 @@ $conn1 = mysqli_connect("localhost","root","","projectcsdl");
 if ($conn1->connect_error) {
     die("Connection failed: " . $conn1->connect_error);
 }
-?>
+?>  

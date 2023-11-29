@@ -5,8 +5,8 @@ session_start();
 include("includes/db.php");
 include("includes/header.php");
 include("check.php");
-if (isset($_GET['people_id'])) {
-	$patient_id = $_GET['people_id'];
+if (isset($_GET['patientID'])) {
+	$patient_id = $_GET['patientID'];
 	$sql_id = "SELECT * FROM patient WHERE patientID = " . $patient_id;
 	$result_id = mysqli_query($conn1, $sql_id);
 	if (mysqli_num_rows($result_id) > 0) {
@@ -428,7 +428,7 @@ if (isset($_GET['people_id'])) {
 													</a>
 												</div>
 												<div class="card-body pt-3">
-													<p class="mb-0">Bị gay nặng</p>
+													<p class="mb-0"></p>
 												</div>
 											</div>
 										</div>
@@ -460,9 +460,9 @@ if (isset($_GET['people_id'])) {
 													</tr>
 												</thead>
 												<?php
-												$sql_test = "SELECT * FROM `test` INNER JOIN `test_covid` ON test.test_id=test_covid.test_id
-							INNER JOIN `people_in_camp` ON test.employee_id=people_in_camp.people_in_camp_id
-							WHERE patient_id = " . $patient_id;
+												$sql_test = "SELECT * FROM testing_information t
+															INNER JOIN patient p ON p.patientID = t.patientID
+															WHERE t.patientID = " . $patient_id;
 												$result_test = mysqli_query($conn1, $sql_test);
 												if (mysqli_num_rows($result_test) > 0) {
 													while ($row_test = mysqli_fetch_assoc($result_test)) {
@@ -470,33 +470,13 @@ if (isset($_GET['people_id'])) {
 														<tbody>
 															<tr>
 																<td>#T-
-																	<?php echo $row_test['test_id'] ?>
+																	<?php echo $row_test['patientID'] ?>
 																</td>
 																<td>#P-
-																	<?php echo $row_test['patient_id'] . " " . $row['fname'] . " " . $row['lname']; ?>
+																	<?php echo $row['fullName']; ?>
 																</td>
 																<td>
-																	<?php
-																	switch ($row_test["people_in_camp_job_type"]) {
-																		case 'Doctor':
-																			echo "#D-" . $row_test["people_in_camp_id"] . " " . $row_test['people_in_camp_fname'] . " " . $row_test['people_in_camp_lname'];
-																			break;
-																		case 'Nurse':
-																			echo "#N-" . $row_test["people_in_camp_id"] . " " . $row_test['people_in_camp_fname'] . " " . $row_test['people_in_camp_lname'];
-																			break;
-																		case 'Staff':
-																			echo "#S-" . $row_test["people_in_camp_id"] . " " . $row_test['people_in_camp_fname'] . " " . $row_test['people_in_camp_lname'];
-																			break;
-																		case 'Volunteer':
-																			echo "#V-" . $row_test["people_in_camp_id"] . " " . $row_test['people_in_camp_fname'] . " " . $row_test['people_in_camp_lname'];
-																			break;
-																		case 'Manager':
-																			echo "#M-" . $row_test["people_in_camp_id"] . " " . $row_test['people_in_camp_fname'] . " " . $row_test['people_in_camp_lname'];
-																			break;
-																	} ?>
-																</td>
-																<td>
-																	<?php echo $row_test['date_test'] ?>
+																	<?php echo $row_test['testTime'] ?>
 																</td>
 																<?php
 																switch ($row_test['result']) {
@@ -517,16 +497,16 @@ if (isset($_GET['people_id'])) {
 																?>
 
 																<td><span class="text-dark">
-																		<?php echo $row_test['pcr']; ?>
+																		<?php echo $row_test['PCR_test_result'] == 1 ? "Positive" : "Negative"; ?>
 																	</span></td>
 																<td><span class="text-dark">
-																		<?php echo $row_test['quick_test']; ?>
+																		<?php echo $row_test['quick_test_result'] == 1 ? "Positive" : "Negative"; ?>
 																	</span></td>
 																<td><span class="text-dark">
-																		<?php echo $row_test['spo2']; ?>%
+																		<?php echo $row_test['SPO2_percentage']; ?>%
 																	</span></td>
 																<td><span class="text-dark">
-																		<?php echo $row_test['respiratory_rate']; ?> bpm
+																		<?php echo $row_test['Respiratory_rate']; ?> bpm
 																	</span></td>
 															</tr>
 														</tbody>
@@ -547,18 +527,18 @@ if (isset($_GET['people_id'])) {
 											<table id="example4" class="display min-w850">
 												<thead>
 													<tr>
-														<th>Doctor ID</th>
-														<th>Patient ID</th>
+														<th>Doctor</th>
+														<th>Patient</th>
 														<!-- <th>Result</th> -->
 														<th>Date Start</th>
 														<th>Date End</th>
 													</tr>
 												</thead>
 												<?php
-												$sql_traetment = "SELECT * FROM `treatment`
-							INNER JOIN people_in_camp ON treatment.doctor_id = people_in_camp.people_in_camp_id
-							INNER JOIN patient ON `treatment`.`patient_id` = `patient`.`patient_id` WHERE treatment.patient_id =" . $patient_id;
-												$result_treatment = mysqli_query($conn1, $sql_traetment);
+												$sql_treatment = "SELECT * FROM `treatment`
+							INNER JOIN people ON treatment.DoctorID = people.peopleID
+							INNER JOIN patient ON `treatment`.`patientID` = `patient`.`patientID` WHERE treatment.patientID =" . $patient_id;
+												$result_treatment = mysqli_query($conn1, $sql_treatment);
 												if (mysqli_num_rows($result_treatment) > 0) {
 													while ($row_treatment = mysqli_fetch_assoc($result_treatment)) {
 														?>
@@ -566,35 +546,36 @@ if (isset($_GET['people_id'])) {
 															<tr>
 																<td><span class="text-nowrap">
 																		<?php
-																		switch ($row_treatment["people_in_camp_job_type"]) {
+																		switch ($row_treatment["role"]) {
 																			case 'Doctor':
-																				echo "#D-" . $row_treatment["people_in_camp_id"] . " " . $row_treatment['people_in_camp_fname'] . " " . $row_treatment['people_in_camp_lname'];
+																				echo $row_treatment['peopleName'];
 																				break;
 																			case 'Nurse':
-																				echo "#N-" . $row_treatment["people_in_camp_id"] . " " . $row_treatment['people_in_camp_fname'] . " " . $row_treatment['people_in_camp_lname'];
+																				echo $row_treatment['peopleName'];
 																				break;
 																			case 'Staff':
-																				echo "#S-" . $row_treatment["people_in_camp_id"] . " " . $row_treatment['people_in_camp_fname'] . " " . $row_treatment['people_in_camp_lname'];
+																				echo $row_treatment['peopleName'];
 																				break;
 																			case 'Volunteer':
-																				echo "#V-" . $row_treatment["people_in_camp_id"] . " " . $row_treatment['people_in_camp_fname'] . " " . $row_treatment['people_in_camp_lname'];
+																				echo $row_treatment['peopleName'];
 																				break;
 																			case 'Manager':
-																				echo "#M-" . $row_treatment["people_in_camp_id"] . " " . $row_treatment['people_in_camp_fname'] . " " . $row_treatment['people_in_camp_lname'];
+																				echo $row_treatment['peopleName'];
+																				break;
 																		} ?>
 																	</span></td>
-																<td><span class="text-nowrap">#P-
-																		<?php echo $row_treatment['patient_id'] . " " . $row_treatment['fname'] . " " . $row_treatment['lname']; ?>
+																<td><span class="text-nowrap">
+																		<?php echo $row_treatment['fullName']; ?>
 																	</span></td>
 																<!-- <td><span class="badge light badge-success">Recovered</span></td> -->
 																<td>
-																	<?php echo $row_treatment['date_start']; ?>
+																	<?php echo $row_treatment['admissionDate']; ?>
 																</td>
 																<td>
-																	<?php if ($row_treatment['date_end'] == "") {
+																	<?php if ($row_treatment['dischargeDate'] == "") {
 																		echo "Unknown";
 																	} else {
-																		echo $row_treatment['date_end'];
+																		echo $row_treatment['dischargeDate'];
 																	}
 																	?>
 																</td>
@@ -613,129 +594,6 @@ if (isset($_GET['people_id'])) {
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-12">
-								<div class="card">
-									<div class="card-header">
-										<h4 class="card-title">Prescription</h4>
-									</div>
-									<div class="card-body">
-										<div class="table-responsive">
-											<table id="example4" class="display min-w850">
-												<thead>
-													<tr>
-														<th>Doctor ID</th>
-														<th>Patient ID</th>
-														<th>Medicine</th>
-														<th>Date</th>
-														<th>Total</th>
-													</tr>
-												</thead>
-												<?php
-												$total_amount_of_materials_used = 0;
-												$total_medicine_ex = 0;
-												$sql_prescription = "SELECT  DISTINCT `prescription`.`patient_id`, patient.fname, patient.lname, people_in_camp.people_in_camp_id, people_in_camp.people_in_camp_fname, people_in_camp.people_in_camp_lname, prescription.date_prescription, people_in_camp.people_in_camp_job_type FROM `prescription`  
-							INNER JOIN people_in_camp ON prescription.doctor_id = people_in_camp.people_in_camp_id
-							INNER JOIN patient ON prescription.patient_id = patient.patient_id
-							INNER JOIN medicine ON prescription.medicine_id = medicine.medicine_id
-							WHERE prescription.patient_id = " . $patient_id .
-													" ORDER BY `prescription`.`date_prescription` DESC";
-												$result_prescription = mysqli_query($conn1, $sql_prescription);
-												if (mysqli_num_rows($result_prescription) > 0) {
-													while ($row_prescription = mysqli_fetch_assoc($result_prescription)) {
-														?>
-														<tbody>
-															<tr>
-																<td><span class="text-nowrap">
-																		<?php
-																		switch ($row_prescription["people_in_camp_job_type"]) {
-																			case 'Doctor':
-																				echo "#D-" . $row_prescription["people_in_camp_id"] . " " . $row_prescription['people_in_camp_fname'] . " " . $row_prescription['people_in_camp_lname'];
-																				break;
-																			case 'Nurse':
-																				echo "#N-" . $row_prescription["people_in_camp_id"] . " " . $row_prescription['people_in_camp_fname'] . " " . $row_prescription['people_in_camp_lname'];
-																				break;
-																			case 'Staff':
-																				echo "#S-" . $row_prescription["people_in_camp_id"] . " " . $row_prescription['people_in_camp_fname'] . " " . $row_prescription['people_in_camp_lname'];
-																				break;
-																			case 'Volunteer':
-																				echo "#V-" . $row_prescription["people_in_camp_id"] . " " . $row_prescription['people_in_camp_fname'] . " " . $row_prescription['people_in_camp_lname'];
-																				break;
-																			case 'Manager':
-																				echo "#M-" . $row_prescription["people_in_camp_id"] . " " . $row_prescription['people_in_camp_fname'] . " " . $row_prescription['people_in_camp_lname'];
-																		} ?>
-																	</span></td>
-																<td><span class="text-nowrap">#P-
-																		<?php echo $row_prescription['patient_id'] . " " . $row_prescription['fname'] . " " . $row_prescription['lname']; ?>
-																	</span></td>
-																<td><span class="text-nowrap">
-																		<!-- <td><span class="badge light badge-success"> -->
-																		<?php
-																		$sql_prescription_details = "SELECT * FROM `prescription`
-																		INNER JOIN medicine ON prescription.medicine_id = medicine.medicine_id
-																		WHERE prescription.patient_id =" . $patient_id . "
-																		AND prescription.date_prescription = '" . $row_prescription["date_prescription"] . "' 
-																		ORDER BY `prescription`.`date_prescription` DESC";
-																		$total_medicine = 0;
-																		$result_prescription_details = mysqli_query($conn1, $sql_prescription_details);
-																		if (mysqli_num_rows($result_prescription_details) > 0) {
-																			$total_amount_of_materials_used += mysqli_num_rows($result_prescription_details);
-																			while ($row_prescription_details = mysqli_fetch_assoc($result_prescription_details)) {
-
-																				echo "#ATC-" . $row_prescription_details['medicine_id'] . " " . $row_prescription_details['medicine_name'] . "<br />";
-																				$total_medicine += $row_prescription_details['price'];
-																			}
-																		}
-																		?>
-																	</span></td>
-																<td>
-																	<?php echo $row_prescription["date_prescription"] ?>
-																</td>
-
-																<td>
-																	<?php $total_medicine_ex += $total_medicine;
-																	echo currency_format($total_medicine) ?>
-																</td>
-															<?php }
-												} ?>
-
-													</tr>
-													<td>Prescription number:
-														<?php echo " " . mysqli_num_rows($result_treatment); ?>
-													</td>
-													<td>Number of doctors prescribing:
-														<?php echo " " . mysqli_num_rows($result_treatment); ?>
-													</td>
-													<td>Total amount of materials used:
-														<?php echo " " . $total_amount_of_materials_used; ?>
-													</td>
-													<td></td>
-													<td>Total money:
-														<?php echo currency_format($total_medicine_ex) ?>
-													</td>
-													<!-- <tr>
-											<td><span class="text-nowrap">#B-00002</span></td>
-											<td><span class="text-nowrap">#P-00007</span></td>
-											<td><span class="badge light badge-warning">In Treatment</span></td>
-											<td>07/06/2020</td>
-											<td>28/02/2024</td>
-										</tr> -->
-												</tbody>
-
-											</table>
-										</div>
-									</div>
-								</div>
-								<?php
-								if (isset($_GET['discharge_from_hospital'])) {
-									?>
-									<hr class="mb-4">
-									<a href="report.php?people_id=<?php echo $patient_id ?>"><button
-											class="btn btn-primary btn-lg btn-block" type="submit">Discharge from hospital </button></a>
-									<?php
-								}
-								?>
-
 							</div>
 						</div>
 					</div>

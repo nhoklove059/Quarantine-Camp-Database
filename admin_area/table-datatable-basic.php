@@ -183,7 +183,7 @@ include("check.php");
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo "<tr>";
                                                     echo "<td>" . $row["patientID"] . "</td>";
-                                                    echo "<td><a href='patient-details.php?peopleID=" . $row["patientID"] . "'>" . $row["fullName"] . "</a></td>";
+                                                    echo "<td><a href='patient-details.php?patientID=" . $row["patientID"] . "'>" . $row["fullName"] . "</a></td>";
                                                     echo "<td>" . $row["gender"] . "</td>";
 
                                                     // Doctor Assigned

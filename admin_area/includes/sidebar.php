@@ -12,18 +12,13 @@
 						</a>
 					</li>
                     <li>
-                        <!-- <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-381-user-7"></i>
-							<span class="nav-text">Patients</span>
-						</a> -->
 						<li><a href="table-datatable-basic.php?status=all">Patients List</a></li>
-
-                        <!-- <ul aria-expanded="false"> -->
-							<!-- <li><a href="patient-details.php">Patient Details</a></li>
-                            <li><a href="report.php">Export Patients</a></li>
-							<li><a href="assign.php">Assigned Patients</a></li> -->
-						<!-- </ul> -->
-                    <!-- </li>
+                        <ul aria-expanded="false">
+							<!-- <li><a href="patient-details.php">Patient Details</a></li> -->
+                            <!-- <li><a href="report.php">Export Patients</a></li> -->
+							<!-- <li><a href="assign.php">Assigned Patients</a></li> -->
+						</ul>
+                    </li>
                     <li>
                         <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-heart"></i>
@@ -56,12 +51,12 @@
 							<i class="flaticon-381-search-2"></i>
 							<span class="nav-text">Test Result</span>
 						</a>
-					</li> -->
-                    <!-- <li><a href="reviews.php" class="ai-icon" aria-expanded="false">
+					</li>
+                    <li><a href="reviews.php" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-notepad"></i>
 							<span class="nav-text">Reviews</span>
 						</a>
-					</li> -->
+					</li>
                 </ul>
 				
 				<!-- <div class="copyright">

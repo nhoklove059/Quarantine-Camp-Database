@@ -55,18 +55,25 @@ include("includes/header.php");
                                         <label class="text-black font-w500" name="name">Patient Name</label>
                                         <input type="text" class="form-control" name="fullname"
                                             placeholder="Full name"><br>
-                                        <br><label class="text-black font-w500" name="gender">Gender</label>
+                                        <br>
+                                        <label class="text-black font-w500" name="gender">Gender</label>
                                         <select class="form-control" type="text" name="gender">
                                             <option selected>Choose Gender ...</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
+                                        </select><br>
+                                        <label class="text-black font-w500" name="doctor">Doctor</label>
+                                        <select class="form-control" type="text" name="doctor">
+                                            <option value="" selected>None</option>
+                                            <option value="D1">Doctor 1</option>
+                                            <option value="D2">Doctor 2</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-black font-w500" require>Comorbidities</label><br>
                                         To select multiple, hold down the Ctrl key and select
-                                        <select class="form-control" name="comorbidities[]" size="5"
+                                        <select class="text-black form-control" name="comorbidities[]" size="5"
                                             multiple="multiple">
                                             <option value="Older Age">Older Age</option>
                                             <option value="Lung problems, including asthma">Lung problems, including
@@ -90,7 +97,7 @@ include("includes/header.php");
                                     <div class="form-group">
                                         <label class="text-black font-w500">Symptoms</label><br>
                                         To select multiple, hold down the Ctrl key and select
-                                        <select class="form-control" name="symptom[]" size="5" multiple="multiple">
+                                        <select class="text-black form-control" name="symptom[]" size="5" multiple="multiple">
                                             <option value="Cough">Cough</option>
                                             <option value="Headache">Headache</option>
                                             <option value="Fatigue">Fatigue</option>
@@ -104,6 +111,26 @@ include("includes/header.php");
                                         </select><br>
                                         <input type="text" class="form-control" name="symptoms_other"
                                             placeholder="Symptoms other">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="text-black font-w500" name="room">Room</label>
+                                        <select class="text-black form-control" type="text" name="room">
+                                            <option value="" selected>None</option>
+                                            <?php $i = 1;
+                                            while ($i <= 10) {
+                                                if ($i == 2 || $i == 5 || $i == 8) {
+                                                    echo "<option value=R" . $i . ">R" . $i . " Emergency</option>";
+                                                }else if($i == 3 || $i == 6 || $i == 9){
+                                                    echo "<option value=R" . $i . ">R" . $i . " Recuperation</option>";
+                                                }else{
+                                                    echo "<option value=R" . $i . ">R" . $i . " Normal</option>";
+
+                                                }
+                                                $i = $i + 1;
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
@@ -156,7 +183,7 @@ include("includes/header.php");
                                             if (isset($_GET['status'])) {
                                                 switch ($_GET['status']) {
                                                     case 'all':
-                                                        $sql = "SELECT * FROM patient WHERE isDeleted is null";
+                                                        $sql = "SELECT * FROM patient WHERE isDeleted = 0";
                                                         break;
 
                                                     case 'being_treatment':
@@ -193,7 +220,7 @@ include("includes/header.php");
                                                                         JOIN patient ON patient.patientID = t.patientID
                                                                         WHERE p.role = 'Doctor' and patient.patientID =" . $row["patientID"];
                                                         $result_doctor = mysqli_query($conn1, $sql_doctor);
-                                            
+
                                                         if (mysqli_num_rows($result_doctor) > 0) {
                                                             $row_doctor = mysqli_fetch_assoc($result_doctor);
                                                             echo "<td>" . $row_doctor['peopleName'] . "</td>";
@@ -237,14 +264,18 @@ include("includes/header.php");
                                                     ?>
 
                                                     <!-- Room -->
-                                                    <td><?php echo $row["roomID"]; ?></td>
+                                                    <td>
+                                                        <?php echo $row["roomID"]; ?>
+                                                    </td>
 
                                                     <!-- Action -->
                                                     <td>
                                                         <div class="d-flex">
-                                                            <a href="http://localhost/B01-3/admin_area/report.php?patientID=<?php echo $row["patientID"]; ?>"
+                                                            <a href="http://localhost/ProjectCSDL/admin_area/patient-details.php?patientID=<?php echo $row["patientID"]; ?>"
                                                                 class="btn btn-primary shadow btn-xs sharp mr-1"><i
                                                                     class="fa fa-pencil"></i></a>
+
+
                                                             <a href="patient_delete.php?<?php echo "patientID=" . $row['patientID'] ?>"
                                                                 class="btn btn-danger shadow btn-xs sharp"><i
                                                                     class="fa fa-trash"></i></a>
@@ -268,9 +299,7 @@ include("includes/header.php");
                                                                     </svg>
                                                                 </div>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item"
-                                                                        href="patient-details.php?peopleID=<?php echo $row["patientID"]; ?>">
-                                                                        View Detail</a>
+                                                                    <a class="dropdown-item" href="http://localhost/ProjectCSDL/admin_area/patient-details.php?patientID=<?php echo $row["patientID"]; ?>">View Detail</a>
                                                                     <a class="dropdown-item"
                                                                         href="test-covid.php?peopleID=<?php echo $row["patientID"]; ?>">Show
                                                                         all tests</a>

@@ -64,14 +64,14 @@ include("includes/header.php");
                                         </select><br>
                                         <label class="text-black font-w500" name="doctor">Doctor</label>
                                         <select class="form-control" type="text" name="doctor">
-                                            <option value="" selected>None</option>
+                                            <option value="NULL" selected>None</option>
                                             <option value="D1">Doctor 1</option>
                                             <option value="D2">Doctor 2</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="text-black font-w500" require>Comorbidities</label><br>
+                                        <label class="text-black font-w500">Comorbidities</label><br>
                                         To select multiple, hold down the Ctrl key and select
                                         <select class="text-black form-control" name="comorbidities[]" size="5"
                                             multiple="multiple">
@@ -90,14 +90,15 @@ include("includes/header.php");
                                             <option value="Mental health conditionst">Mental health conditionst</option>
                                             <option value="Down syndrome">Down syndrome</option>
                                         </select><br>
-                                        <input type="text" name="comorbidities_other" class="form-control"
-                                            placeholder="Comorbidities other">
+                                        <input type="text" class="form-control" name="comorbidities_other"
+                                            placeholder="Comorbidities other">>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-black font-w500">Symptoms</label><br>
                                         To select multiple, hold down the Ctrl key and select
-                                        <select class="text-black form-control" name="symptom[]" size="5" multiple="multiple">
+                                        <select class="text-black form-control" name="symptom[]" size="5"
+                                            multiple="multiple">
                                             <option value="Cough">Cough</option>
                                             <option value="Headache">Headache</option>
                                             <option value="Fatigue">Fatigue</option>
@@ -116,14 +117,14 @@ include("includes/header.php");
                                     <div class="form-group">
                                         <label class="text-black font-w500" name="room">Room</label>
                                         <select class="text-black form-control" type="text" name="room">
-                                            <option value="" selected>None</option>
+                                            <option value="NULL" selected>None</option>
                                             <?php $i = 1;
                                             while ($i <= 10) {
                                                 if ($i == 2 || $i == 5 || $i == 8) {
                                                     echo "<option value=R" . $i . ">R" . $i . " Emergency</option>";
-                                                }else if($i == 3 || $i == 6 || $i == 9){
+                                                } else if ($i == 3 || $i == 6 || $i == 9) {
                                                     echo "<option value=R" . $i . ">R" . $i . " Recuperation</option>";
-                                                }else{
+                                                } else {
                                                     echo "<option value=R" . $i . ">R" . $i . " Normal</option>";
 
                                                 }
@@ -135,7 +136,7 @@ include("includes/header.php");
 
                                     <div class="form-group">
                                         <label class="text-black font-w500">Contact (Phone Number)</label>
-                                        <input type="number" class="form-control" name="phone">
+                                        <input type="text" class="form-control" name="phone">
                                     </div>
 
                                     <div class="form-group">
@@ -216,9 +217,8 @@ include("includes/header.php");
                                                     // Doctor Assigned
                                                     if (isset($row["patientID"])) {
                                                         $sql_doctor = "SELECT p.peopleName FROM people p
-                                                                        JOIN treatment t ON t.DoctorID = p.peopleID  
-                                                                        JOIN patient ON patient.patientID = t.patientID
-                                                                        WHERE p.role = 'Doctor' and patient.patientID =" . $row["patientID"];
+                                                                                JOIN patient pp ON pp.peopleID = p.peopleID
+                                                                                WHERE pp.peopleID LIKE 'D%' and pp.patientID =" . $row["patientID"];
                                                         $result_doctor = mysqli_query($conn1, $sql_doctor);
 
                                                         if (mysqli_num_rows($result_doctor) > 0) {
@@ -265,7 +265,12 @@ include("includes/header.php");
 
                                                     <!-- Room -->
                                                     <td>
-                                                        <?php echo $row["roomID"]; ?>
+                                                        <?php
+                                                        if ($row["roomID"] == "NULL") {
+                                                            echo "No room Assigned";
+                                                        } else {
+                                                            echo $row["roomID"];
+                                                        } ?>
                                                     </td>
 
                                                     <!-- Action -->
@@ -299,7 +304,9 @@ include("includes/header.php");
                                                                     </svg>
                                                                 </div>
                                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="http://localhost/ProjectCSDL/admin_area/patient-details.php?patientID=<?php echo $row["patientID"]; ?>">View Detail</a>
+                                                                    <a class="dropdown-item"
+                                                                        href="http://localhost/ProjectCSDL/admin_area/patient-details.php?patientID=<?php echo $row["patientID"]; ?>">View
+                                                                        Detail</a>
                                                                     <a class="dropdown-item"
                                                                         href="test-covid.php?peopleID=<?php echo $row["patientID"]; ?>">Show
                                                                         all tests</a>

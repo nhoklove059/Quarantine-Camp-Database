@@ -5,16 +5,17 @@ include("includes/db.php");
 if (isset($_GET['add_patient'])) {
     $fullname = $_GET['fullname'];
     $gender = $_GET['gender'];
+    $doctor = $_GET['doctor'];
+    $room = $_GET['room'];
     $phone = $_GET['phone'];
     $address = $_GET['address'];
     // $comorbidities_other = $_GET['comorbidities_other'];
     // $symptoms_other = $_GET['symptoms_other'];
     $date = date("Y-m-d H:i:s");
-    // echo $fullname . $gender . $phone . $address . $comorbidities_other . $symptoms_other;
 
     // Kiểm tra nếu các trường thông tin không được điền đầy đủ
     if ($fullname == "" && $phone == "" && $address == "") {
-        echo "Please fill in all the fields";
+        echo "<script>alert('Please fill in all the fields')</script>";
     } else {
         // Kiểm tra xem thông tin bệnh nhân đã tồn tại chưa
         $sql_check = "SELECT * FROM patient WHERE fullName = '" . $fullname . "' AND phone = '" . $phone . "' AND address = '" . $address . "'";
@@ -46,7 +47,7 @@ if (isset($_GET['add_patient'])) {
                                 // echo '<script> alert("Add patient success");</script>';
                             } else {
                                 // Hiện thông báo khi thêm thông tin bệnh nền không thành công
-                                echo 'Không thành công. Lỗi' . mysqli_error($conn1);
+                                echo "<script>alert('Không thành công')</script>". mysqli_error($conn1);
                             }
                             // echo "\n" . $sql;
                         }

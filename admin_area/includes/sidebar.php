@@ -37,7 +37,7 @@
 						</a>
                         <ul aria-expanded="false">
 							<li><a href="bed-manage.php">Bed</a></li>
-							<li><a href="building.php?building=all">Building</a></li>
+							<!-- <li><a href="building.php?building=all">Building</a></li> -->
 						</ul>
                     </li>
 					<li>

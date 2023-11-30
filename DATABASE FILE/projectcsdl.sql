@@ -57,6 +57,10 @@ INSERT INTO `comorbidities` VALUES (10,'Asthma');
 INSERT INTO `comorbidities` VALUES (11,'Heart Condition');
 INSERT INTO `comorbidities` VALUES (12,'Immunocompromised State');
 INSERT INTO `comorbidities` VALUES (1,'Diabetes');
+INSERT INTO `comorbidities` VALUES (37,'Lung problems, including asthma');
+INSERT INTO `comorbidities` VALUES (38,'Lung problems, including asthma');
+INSERT INTO `comorbidities` VALUES (39,'Heart disease');
+INSERT INTO `comorbidities` VALUES (40,'Diabetes and obesity');
 /*!40000 ALTER TABLE `comorbidities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,8 +113,8 @@ CREATE TABLE `patient` (
   `phone` varchar(45) DEFAULT NULL,
   `gender` char(10) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
-  `admissionDate` date DEFAULT NULL,
-  `dischargeDate` date DEFAULT NULL,
+  `admissionDate` datetime DEFAULT NULL,
+  `dischargeDate` datetime DEFAULT NULL,
   `roomID` varchar(10) DEFAULT NULL,
   `peopleID` varchar(10) DEFAULT NULL,
   `isDeleted` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
@@ -119,7 +123,7 @@ CREATE TABLE `patient` (
   KEY `fk_patient_people1_idx` (`peopleID`),
   CONSTRAINT `fk_patient_people1` FOREIGN KEY (`peopleID`) REFERENCES `people` (`peopleID`),
   CONSTRAINT `roomID` FOREIGN KEY (`roomID`) REFERENCES `room` (`roomID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,18 +132,33 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` VALUES (1,'John Doe','555-1234','Male','123 Main St','2023-09-01',NULL,'R1','M1',NULL);
-INSERT INTO `patient` VALUES (2,'Jane Smith','555-5678','Female','456 Elm St','2023-09-02','2023-09-10','R2','N1',NULL);
-INSERT INTO `patient` VALUES (3,'Bob Johnson','555-9876','Male','789 Oak St','2023-09-03',NULL,'R3','D1',NULL);
-INSERT INTO `patient` VALUES (4,'Alice Brown','555-4321','Female','101 Pine St','2023-09-04',NULL,'R1','S1',NULL);
-INSERT INTO `patient` VALUES (5,'David Davis','555-2468','Male','202 Cedar St','2023-09-05','2023-09-08','R2','V1',NULL);
-INSERT INTO `patient` VALUES (6,'Eva White','555-9753','Female','303 Oak St','2023-09-06','2023-09-12','R3','D2',NULL);
-INSERT INTO `patient` VALUES (7,'Michael Green','555-4203','Male','404 Pine St','2023-09-07',NULL,'R1','N2',NULL);
-INSERT INTO `patient` VALUES (8,'Olivia Black','555-3189','Female','505 Elm St','2023-09-08',NULL,'R2','S2',NULL);
-INSERT INTO `patient` VALUES (9,'William Gray','555-8750','Male','606 Oak St','2023-09-09','2023-09-15','R3','V2',NULL);
-INSERT INTO `patient` VALUES (10,'Sophia Adams','555-2345','Female','707 Pine St','2023-09-10',NULL,'R1','V3',NULL);
-INSERT INTO `patient` VALUES (11,'asd','123','Male','334/2b hoàng hoa thám',NULL,NULL,NULL,NULL,NULL);
-INSERT INTO `patient` VALUES (12,'1','1','Male','1',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `patient` VALUES (1,'John Doe','555-1234','Male','123 Main St','2023-09-01 00:00:00',NULL,'R1','D1','0');
+INSERT INTO `patient` VALUES (2,'Jane Smith','555-5678','Female','456 Elm St','2023-09-02 00:00:00','2023-09-10 00:00:00','R2','D1','0');
+INSERT INTO `patient` VALUES (3,'Bob Johnson','555-9876','Male','789 Oak St','2023-09-03 00:00:00',NULL,'R3','D1','0');
+INSERT INTO `patient` VALUES (4,'Alice Brown','555-4321','Female','101 Pine St','2023-09-04 00:00:00',NULL,'R1','D1','0');
+INSERT INTO `patient` VALUES (5,'David Davis','555-2468','Male','202 Cedar St','2023-09-05 00:00:00','2023-09-08 00:00:00','R2','D1','0');
+INSERT INTO `patient` VALUES (6,'Eva White','555-9753','Female','303 Oak St','2023-09-06 00:00:00','2023-09-12 00:00:00','R3','D2','0');
+INSERT INTO `patient` VALUES (7,'Michael Green','555-4203','Male','404 Pine St','2023-09-07 00:00:00',NULL,'R1','D2','0');
+INSERT INTO `patient` VALUES (8,'Olivia Black','555-3189','Female','505 Elm St','2023-09-08 00:00:00',NULL,'R2','D2','0');
+INSERT INTO `patient` VALUES (9,'William Gray','555-8750','Male','606 Oak St','2023-09-09 00:00:00','2023-09-15 00:00:00','R3','D2','0');
+INSERT INTO `patient` VALUES (10,'Sophia Adams','555-2345','Female','707 Pine St','2023-09-10 00:00:00',NULL,'R1','D2','0');
+INSERT INTO `patient` VALUES (11,'asd','123','Male','334/2b hoàng hoa thám',NULL,NULL,NULL,NULL,'1');
+INSERT INTO `patient` VALUES (12,'1','1','Male','1',NULL,NULL,NULL,NULL,'1');
+INSERT INTO `patient` VALUES (13,'he','1','Male','1he',NULL,NULL,NULL,NULL,'1');
+INSERT INTO `patient` VALUES (14,'12','1','Male','12',NULL,NULL,NULL,NULL,'1');
+INSERT INTO `patient` VALUES (15,'name','1234','Male','name',NULL,NULL,'R2','D1','1');
+INSERT INTO `patient` VALUES (23,'h','4256','Male','b hoàng hoa thám',NULL,NULL,'R1','D1','1');
+INSERT INTO `patient` VALUES (24,'trương quang hùng','+84388589911','Male','334/2b hoàng hoa thám','2023-11-30 20:19:26',NULL,'R2','D2','0');
+INSERT INTO `patient` VALUES (25,'122','123','Male','334/2b hoàng hoa thám','2023-11-30 22:20:31',NULL,'R2','D2','0');
+INSERT INTO `patient` VALUES (26,'asd','23424234','Female','sdfsfsf','2023-11-30 22:29:17',NULL,'R6','D2','0');
+INSERT INTO `patient` VALUES (31,'3','333','Male','333','2023-11-30 22:57:55',NULL,'R1','D1','0');
+INSERT INTO `patient` VALUES (34,'567','45','Male','64','2023-11-30 23:08:32',NULL,'R1','D1','0');
+INSERT INTO `patient` VALUES (35,'0','0','Female','0','2023-11-30 23:10:51',NULL,'R2','D1','0');
+INSERT INTO `patient` VALUES (36,'9','9','Male','9','2023-11-30 23:11:07',NULL,'R3','D1','0');
+INSERT INTO `patient` VALUES (37,'3','3','Male','3','2023-11-30 23:12:14',NULL,'R3','D2','0');
+INSERT INTO `patient` VALUES (38,'3','3','Male','3','2023-11-30 23:18:29',NULL,'R3','D2','0');
+INSERT INTO `patient` VALUES (39,'555','55','Male','555','2023-11-30 23:18:53',NULL,'R2','D1','0');
+INSERT INTO `patient` VALUES (40,'66','7','Male','7','2023-11-30 23:21:19',NULL,'NULL','NULL','0');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,9 +223,10 @@ LOCK TABLES `people` WRITE;
 /*!40000 ALTER TABLE `people` DISABLE KEYS */;
 INSERT INTO `people` VALUES ('D1','Doctor 1','Doctor',NULL,NULL);
 INSERT INTO `people` VALUES ('D2','Doctor 2','Doctor',NULL,NULL);
-INSERT INTO `people` VALUES ('M1','HUY','Manager',NULL,'12345');
+INSERT INTO `people` VALUES ('M1','HUY','Manager','1','12345');
 INSERT INTO `people` VALUES ('N1','Nurse 1','Nurse',NULL,NULL);
 INSERT INTO `people` VALUES ('N2','Nurse 2','Nurse',NULL,NULL);
+INSERT INTO `people` VALUES ('NULL',NULL,NULL,NULL,NULL);
 INSERT INTO `people` VALUES ('S1','Staff 1','Staff',NULL,NULL);
 INSERT INTO `people` VALUES ('S2','Staff 2','Staff',NULL,NULL);
 INSERT INTO `people` VALUES ('V1','Volunteer 1','Volunteer',NULL,NULL);
@@ -236,6 +256,7 @@ CREATE TABLE `room` (
 
 LOCK TABLES `room` WRITE;
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
+INSERT INTO `room` VALUES ('NULL',NULL,NULL);
 INSERT INTO `room` VALUES ('R1','Normal',10);
 INSERT INTO `room` VALUES ('R10','Normal',10);
 INSERT INTO `room` VALUES ('R2','Emergency',5);
@@ -286,6 +307,32 @@ INSERT INTO `symptom` VALUES (9,'Cough','Severe','14:15:00','16:45:00');
 INSERT INTO `symptom` VALUES (11,'Nausea or vomiting',NULL,'22:47:19',NULL);
 INSERT INTO `symptom` VALUES (12,'Cough',NULL,'23:05:09',NULL);
 INSERT INTO `symptom` VALUES (12,'Fatigue',NULL,'23:05:09',NULL);
+INSERT INTO `symptom` VALUES (13,'Muscle or body aches',NULL,'00:38:33',NULL);
+INSERT INTO `symptom` VALUES (14,'Shortness of breath or difficulty breathing',NULL,'00:43:17',NULL);
+INSERT INTO `symptom` VALUES (23,'Headache',NULL,'20:11:49',NULL);
+INSERT INTO `symptom` VALUES (24,'Cough',NULL,'20:19:26',NULL);
+INSERT INTO `symptom` VALUES (24,'Headache',NULL,'20:19:26',NULL);
+INSERT INTO `symptom` VALUES (24,'Fatigue',NULL,'20:19:26',NULL);
+INSERT INTO `symptom` VALUES (25,'Cough',NULL,'22:20:31',NULL);
+INSERT INTO `symptom` VALUES (25,'Headache',NULL,'22:20:31',NULL);
+INSERT INTO `symptom` VALUES (25,'Fatigue',NULL,'22:20:31',NULL);
+INSERT INTO `symptom` VALUES (26,'Sore throat',NULL,'22:29:17',NULL);
+INSERT INTO `symptom` VALUES (26,'Congestion or runny nose',NULL,'22:29:17',NULL);
+INSERT INTO `symptom` VALUES (26,'Nausea or vomiting',NULL,'22:29:17',NULL);
+INSERT INTO `symptom` VALUES (31,'Fatigue',NULL,'22:57:55',NULL);
+INSERT INTO `symptom` VALUES (31,'Shortness of breath or difficulty breathing',NULL,'22:57:55',NULL);
+INSERT INTO `symptom` VALUES (31,'Muscle or body aches',NULL,'22:57:55',NULL);
+INSERT INTO `symptom` VALUES (34,'Headache',NULL,'23:08:32',NULL);
+INSERT INTO `symptom` VALUES (34,'Fatigue',NULL,'23:08:32',NULL);
+INSERT INTO `symptom` VALUES (34,'Shortness of breath or difficulty breathing',NULL,'23:08:32',NULL);
+INSERT INTO `symptom` VALUES (34,'Muscle or body aches',NULL,'23:08:32',NULL);
+INSERT INTO `symptom` VALUES (35,'Fatigue',NULL,'23:10:51',NULL);
+INSERT INTO `symptom` VALUES (36,'Headache',NULL,'23:11:07',NULL);
+INSERT INTO `symptom` VALUES (37,'Headache',NULL,'23:12:14',NULL);
+INSERT INTO `symptom` VALUES (37,'Headache',NULL,'23:18:29',NULL);
+INSERT INTO `symptom` VALUES (38,'Headache',NULL,'23:18:29',NULL);
+INSERT INTO `symptom` VALUES (39,'Headache',NULL,'23:18:53',NULL);
+INSERT INTO `symptom` VALUES (40,'Muscle or body aches',NULL,'23:21:19',NULL);
 /*!40000 ALTER TABLE `symptom` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-29  8:04:57
+-- Dump completed on 2023-11-30 23:36:54

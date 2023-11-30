@@ -8,18 +8,21 @@ include("includes/header.php");
 if (isset($_GET['patientID'])) {
 	$patient_id = $_GET['patientID'];
 	$sql_id = "SELECT * FROM patient WHERE patientID = " . $patient_id;
+	$sql_comorbidity = "SELECT * FROM comorbidities WHERE patientID = " . $patient_id;
+	$sql_symptom = "SELECT * FROM symptom WHERE patientID = " . $patient_id;
 	$result_id = mysqli_query($conn1, $sql_id);
+	$result_symptom = mysqli_query($conn1, $sql_symptom);
+	$result_comorbidity = mysqli_query($conn1, $sql_comorbidity);
 	if (mysqli_num_rows($result_id) > 0) {
 		while ($row = mysqli_fetch_assoc($result_id)) {
-
+			$row_comorbidity = mysqli_fetch_assoc($result_comorbidity);
+			$row_symptom = mysqli_fetch_assoc($result_symptom);
 			?>
 
 			<body>
 
 
-				<!--*******************
-		Preloader start
-	********************-->
+				
 				<div id="preloader">
 					<div class="sk-three-bounce">
 						<div class="sk-child sk-bounce1"></div>
@@ -27,62 +30,28 @@ if (isset($_GET['patientID'])) {
 						<div class="sk-child sk-bounce3"></div>
 					</div>
 				</div>
-				<!--*******************
-		Preloader end
-	********************-->
-
-				<!--**********************************
-		Main wrapper start
-	***********************************-->
+				
 				<div id="main-wrapper">
 
-					<!--**********************************
-			Nav header start
-		***********************************-->
+					
 					<?php
 
 					include("includes/navhead.php");
 
 					?>
-					<!--**********************************
-			Nav header end
-		***********************************-->
-
-					<!--**********************************
-			Chat box start
-		***********************************-->
-
-					<!--**********************************
-			Chat box End
-		***********************************-->
-
-					<!--**********************************
-			Header start
-		***********************************-->
+					
 					<?php
 
 					include("includes/main.php");
 
 					?>
-					<!--**********************************
-			Header end ti-comment-alt
-		***********************************-->
-
-					<!--**********************************
-			Sidebar start
-		***********************************-->
+					
 					<?php
 
 					include("includes/sidebar.php");
 
 					?>
-					<!--**********************************
-			Sidebar end
-		***********************************-->
-
-					<!--**********************************
-			Content body start
-		***********************************-->
+					
 					<div class="content-body">
 						<div class="container-fluid">
 							<div class="row">
@@ -92,10 +61,11 @@ if (isset($_GET['patientID'])) {
 											<h2 class="text-black font-w600">Patient Details</h2>
 											<nav aria-label="breadcrumb">
 												<ol class="breadcrumb">
-													<li class="breadcrumb-item active"><a href="javascript:void(0)">Patient</a></li>
-													<li class="breadcrumb-item"><a href="javascript:void(0)">#P-
-															<?php echo $patient_id; ?>
-														</a></li>
+													<li class="breadcrumb-item active"><a
+															href="table-datatable-basic.php?status=all">Patient</a></li>
+													<li class="breadcrumb-item">
+														<?php echo $row["fullName"]; ?>
+													</li>
 												</ol>
 											</nav>
 										</div>
@@ -106,17 +76,104 @@ if (isset($_GET['patientID'])) {
 													In Treatment
 												</button>
 												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-													<a class="dropdown-item" href="javascript:void(0);">Delete</a>
+													<a class="dropdown-item"
+														href="patient_delete.php?patientID= <?php echo $patient_id; ?>">Delete</a>
 												</div>
 											</div>
-											<a href="app-profile.html" class="btn btn-outline-primary">Update Profile</a>
+											<a class="btn btn-outline-primary" data-toggle="modal"
+												data-target="#addOrderModal">Update Profile</a>
 											<a href="print.php?people_id=<?php echo $patient_id ?>"
 												class="btn btn-primary btn-lg ml-2">Print</a>
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<div class="modal fade" id="addOrderModal">
+								<div class="modal-dialog modal-lg" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Update Profile</h5>
+											<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+											</button>
+										</div>
+										<?php echo '
+										<div class="modal-body">
+											<form action="update_patient.php?" method="get">
+
+												<input type="hidden" name="patientID" value="' . $patient_id .'">
+
+												<div class="form-group">
+													<label class="text-black font-w500" name="name">Patient Name</label>
+													<input type="text" class="form-control" name="fullname"
+														value="' . $row["fullName"] .'"><br>
+													<br><label class="text-black font-w500" name="gender">Gender</label>
+													<select class="form-control" type="text" name="gender">
+														<option selected>Choose Gender ...</option>
+														<option value="Male" ' . ($row["gender"] == "Male" ? "selected" : "") .'>Male</option>
+														<option value="Female" ' . ($row["gender"] == "Female" ? "selected" : "") .'>Female</option>
+													</select>
+												</div>
+										
+												<div class="form-group">
+													<label class="text-black font-w500" require>Comorbidities</label><br>
+													To select multiple, hold down the Ctrl key and select
+													<select class="form-control" name="comorbidities[]" size="5" multiple="multiple">
+														<option value="Older Age" ' . ($row_comorbidity["comorbidityName"] == "Older Age" ? "selected" : "") . '>Older Age</option>
+														<option value="Lung problems, including asthma" ' . ($row_comorbidity["comorbidityName"] == "Lung problems, including asthma" ? "selected" : "") . '>Lung problems, including asthma</option>
+														<option value="Heart disease" ' . ($row_comorbidity["comorbidityName"] == "Heart disease" ? "selected" : "") . '>Heart disease</option>
+														<option value="Brain and nervous system conditions" ' . ($row_comorbidity["comorbidityName"] == "Brain and nervous system conditions" ? "selected" : "") . '>Brain and nervous system conditions</option>
+														<option value="Diabetes and obesity" ' . ($row_comorbidity["comorbidityName"] == "Diabetes and obesity" ? "selected" : "") . '>Diabetes and obesity</option>
+														<option value="Cancer and certain blood disorders" ' . ($row_comorbidity["comorbidityName"] == "Cancer and certain blood disorders" ? "selected" : "") . '>Cancer and certain blood disorders</option>
+														<option value="Weakened immune system" ' . ($row_comorbidity["comorbidityName"] == "Weakened immune system" ? "selected" : "") . '>Weakened immune system</option>
+														<option value="Chronic kidney or liver disease" ' . ($row_comorbidity["comorbidityName"] == "Chronic kidney or liver disease" ? "selected" : "") . '>Chronic kidney or liver disease</option>
+														<option value="Mental health conditions" ' . ($row_comorbidity["comorbidityName"] == "Mental health conditions" ? "selected" : "") . '>Mental health conditions</option>
+														<option value="Down syndrome" ' . ($row_comorbidity["comorbidityName"] == "Down syndrome" ? "selected" : "") . '>Down syndrome</option>
+													</select><br>
+												</div>
+
+												<div class="form-group">
+													<label class="text-black font-w500">Symptoms</label><br>
+													To select multiple, hold down the Ctrl key and select
+													<select class="form-control" name="symptom[]" size="5" multiple="multiple">
+														<option value="Cough" ' . ($row_symptom["symptomsName"] == "Cough" ? "selected" : "") . '>Cough</option>
+														<option value="Headache" ' . ($row_symptom["symptomsName"] == "Headache" ? "selected" : "") . '>Headache</option>
+														<option value="Fatigue" ' . ($row_symptom["symptomsName"] == "Fatigue" ? "selected" : "") . '>Fatigue</option>
+														<option value="Shortness of breath or difficulty breathing" ' . ($row_symptom["symptomsName"] == "Shortness of breath or difficulty breathing" ? "selected" : "") . '>
+															Shortness of breath or difficulty breathing
+														</option>
+														<option value="Muscle or body aches" ' . ($row_symptom["symptomsName"] == "Muscle or body aches" ? "selected" : "") . '>Muscle or body aches</option>
+														<option value="Sore throat" ' . ($row_symptom["symptomsName"] == "Sore throat" ? "selected" : "") . '>Sore throat</option>
+														<option value="Congestion or runny nose" ' . ($row_symptom["symptomsName"] == "Congestion or runny nose" ? "selected" : "") . '>
+															Congestion or runny nose
+														</option>
+														<option value="Nausea or vomiting" ' . ($row_symptom["symptomsName"] == "Nausea or vomiting" ? "selected" : "") . '>Nausea or vomiting</option>
+														<option value="Diarrhea" ' . ($row_symptom["symptomsName"] == "Diarrhea" ? "selected" : "") . '>Diarrhea</option>
+													</select><br>
+												</div>
+
+												<div class="form-group">
+													<label class="text-black font-w500">Contact (Phone Number)</label>
+													<input type="text" class="form-control" name="phone" value="'. $row["phone"] .'">
+												</div>
+
+												<div class="form-group">
+													<label class="text-black font-w500">Address</label>
+													<input type="text" class="form-control" name="address" value="'. $row["address"] .'">
+												</div>
+
+												<div class="form-group">
+													<button type="submit" class="btn btn-primary" name="update_patient">UPDATE</button>
+												</div>
+
+											</form>
+										</div>
+										'
+										?>
+									</div>
+								</div>
+							</div>
+
 							<div class="row">
 								<div class="col-xl-9 col-xxl-12">
 									<div class="row">
@@ -135,10 +192,6 @@ if (isset($_GET['patientID'])) {
 																		d="M28.75 12.5C28.7538 11.8116 28.568 11.1355 28.213 10.5458C27.8581 9.95597 27.3476 9.47527 26.7376 9.15632C26.1276 8.83737 25.4415 8.69248 24.7547 8.73752C24.0678 8.78257 23.4065 9.01581 22.8434 9.4117C22.2803 9.80758 21.837 10.3508 21.5621 10.9819C21.2872 11.613 21.1913 12.3076 21.2849 12.9896C21.3785 13.6715 21.6581 14.3146 22.0929 14.8482C22.5277 15.3819 23.101 15.7855 23.75 16.015V20C23.75 21.6576 23.0915 23.2473 21.9194 24.4194C20.7473 25.5915 19.1576 26.25 17.5 26.25C15.8424 26.25 14.2527 25.5915 13.0806 24.4194C11.9085 23.2473 11.25 21.6576 11.25 20V18.65C13.3301 18.3482 15.2323 17.3083 16.6092 15.7203C17.9861 14.1322 18.746 12.1019 18.75 10V2.5C18.75 2.16848 18.6183 1.85054 18.3839 1.61612C18.1495 1.3817 17.8315 1.25 17.5 1.25H13.75C13.4185 1.25 13.1005 1.3817 12.8661 1.61612C12.6317 1.85054 12.5 2.16848 12.5 2.5C12.5 2.83152 12.6317 3.14946 12.8661 3.38388C13.1005 3.6183 13.4185 3.75 13.75 3.75H16.25V10C16.25 11.6576 15.5915 13.2473 14.4194 14.4194C13.2473 15.5915 11.6576 16.25 10 16.25C8.34239 16.25 6.75268 15.5915 5.58058 14.4194C4.40848 13.2473 3.75 11.6576 3.75 10V3.75H6.25C6.58152 3.75 6.89946 3.6183 7.13388 3.38388C7.3683 3.14946 7.5 2.83152 7.5 2.5C7.5 2.16848 7.3683 1.85054 7.13388 1.61612C6.89946 1.3817 6.58152 1.25 6.25 1.25H2.5C2.16848 1.25 1.85054 1.3817 1.61612 1.61612C1.3817 1.85054 1.25 2.16848 1.25 2.5V10C1.25402 12.1019 2.01386 14.1322 3.3908 15.7203C4.76773 17.3083 6.6699 18.3482 8.75 18.65V20C8.75 22.3206 9.67187 24.5462 11.3128 26.1872C12.9538 27.8281 15.1794 28.75 17.5 28.75C19.8206 28.75 22.0462 27.8281 23.6872 26.1872C25.3281 24.5462 26.25 22.3206 26.25 20V16.015C26.9792 15.7599 27.6114 15.2848 28.0591 14.6552C28.5069 14.0256 28.7483 13.2726 28.75 12.5Z"
 																		fill="white" />
 																</svg>
-																<div>
-																	<p class="fs-14 text-white op5 mb-1">Disease</p>
-																	<span class="fs-18 text-white">Cold & Flu</span>
-																</div>
 															</div>
 														</div>
 														<div class="card-info d-flex align-items-start">
@@ -146,11 +199,8 @@ if (isset($_GET['patientID'])) {
 																<h2 class="font-w600 mb-2 text-black">
 																	<?php echo $row['fullName']; ?>
 																</h2>
-																<p class="mb-2">#P-
-																	<?php echo $patient_id ?>
-																</p>
 
-																<p class="mb-2">symptom:
+																<p class="mb-2">Symptom:
 																	<?php
 																	$sql_patient_symptom = "SELECT * FROM symptom WHERE patientId = " . $patient_id;
 																	$result_patient_symptom = mysqli_query($conn1, $sql_patient_symptom);
@@ -271,66 +321,6 @@ if (isset($_GET['patientID'])) {
 								</div>
 								<div class="col-xl-3 col-xxl-12">
 									<div class="row">
-										<div class="col-xl-12 col-xxl-4 col-lg-5">
-											<div class="card">
-												<div class="card-header border-0 pb-0">
-													<h4 class="fs-20 text-black mb-0">Assigned Doctor</h4>
-													<div class="dropdown">
-														<div class="btn-link" role="button" data-toggle="dropdown"
-															aria-expanded="false">
-															<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-																xmlns="http://www.w3.org/2000/svg">
-																<path
-																	d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z"
-																	stroke="#2E2E2E" stroke-width="2" stroke-linecap="round"
-																	stroke-linejoin="round"></path>
-																<path
-																	d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z"
-																	stroke="#2E2E2E" stroke-width="2" stroke-linecap="round"
-																	stroke-linejoin="round"></path>
-																<path
-																	d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z"
-																	stroke="#2E2E2E" stroke-width="2" stroke-linecap="round"
-																	stroke-linejoin="round"></path>
-															</svg>
-														</div>
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="#">Accept Patient</a>
-															<a class="dropdown-item" href="#">Reject Order</a>
-															<a class="dropdown-item" href="#">View Details</a>
-														</div>
-													</div>
-												</div>
-
-												<div class="card-body">
-													<div class="media mb-4 align-items-center">
-														<img src="images/users/12.jpg" alt="" width="85" class="mr-3">
-														<div class="media-body">
-															<h3 class="fs-18 font-w600 mb-1"><a href="javascript:void(0)"
-																	class="text-black">Dr. Elisabeth Moss</a></h3>
-															<span class="fs-14">Dentist</span>
-															<ul class="stars">
-																<li><i class="las la-star"></i></li>
-																<li><i class="las la-star"></i></li>
-																<li><i class="las la-star"></i></li>
-																<li><i class="las la-star"></i></li>
-																<li><i class="las la-star text-dark"></i></li>
-															</ul>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-6">
-															<a href="javascript:void(0)"
-																class="btn btn-outline-dark mb-2 btn-sm d-block">Unassign</a>
-														</div>
-														<div class="col-6">
-															<a href="javascript:void(0)"
-																class="btn btn-primary light mb-2 btn-sm d-block">Check</a>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
 										<div class="col-xl-12 col-xxl-8 col-lg-7">
 											<div class="card">
 												<div class="card-header border-0 pb-0">
@@ -449,7 +439,7 @@ if (isset($_GET['patientID'])) {
 												<thead>
 													<tr>
 														<th>Test ID</th>
-														<th>Patient ID</th>
+														<th>Patient</th>
 														<th>Test Date</th>
 														<th>Status</th>
 														<th>PCR Test</th>
@@ -468,10 +458,10 @@ if (isset($_GET['patientID'])) {
 														?>
 														<tbody>
 															<tr>
-																<td>#T-
+																<td>
 																	<?php echo $row_test['patientID'] ?>
 																</td>
-																<td>#P-
+																<td>
 																	<?php echo $row['fullName']; ?>
 																</td>
 																<td>
@@ -479,17 +469,15 @@ if (isset($_GET['patientID'])) {
 																</td>
 																<?php
 
-																if($row_test['SPO2_percentage'] < 96 && $row_test['Respiratory_rate'] > 20) {
+																if ($row_test['SPO2_percentage'] < 96 && $row_test['Respiratory_rate'] > 20) {
 																	?>
-																		<td><span class="badge light badge-danger">Warning</span></td>
+																	<td><span class="badge light badge-danger">Warning</span></td>
 																	<?php
-																}
-																else if($row_test['PCR_test_value'] > 30 || $row_test['quick_test_value'] > 30) {
+																} else if ($row_test['PCR_test_value'] > 30 || $row_test['quick_test_value'] > 30) {
 																	?>
 																		<td><span class="badge light badge-success">Discharge</span></td>
 																	<?php
-																}
-																else {
+																} else {
 																	?>
 																		<td><span class="badge light badge-danger">Wait for test</span></td>
 																	<?php

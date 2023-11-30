@@ -83,8 +83,8 @@ include("includes/header.php");
                                             <option value="Mental health conditionst">Mental health conditionst</option>
                                             <option value="Down syndrome">Down syndrome</option>
                                         </select><br>
-                                        <input type="text" name="comorbidities_other" class="form-control"
-                                            placeholder="Comorbidities other">
+                                        <!-- <input type="text" name="comorbidities_other" class="form-control"
+                                            placeholder="Comorbidities other"> -->
                                     </div>
 
                                     <div class="form-group">
@@ -102,13 +102,13 @@ include("includes/header.php");
                                             <option value="Nausea or vomiting">CNausea or vomiting</option>
                                             <option value="Diarrhea">Diarrhea</option>
                                         </select><br>
-                                        <input type="text" class="form-control" name="symptoms_other"
-                                            placeholder="Symptoms other">
+                                        <!-- <input type="text" class="form-control" name="symptoms_other"
+                                            placeholder="Symptoms other"> -->
                                     </div>
 
                                     <div class="form-group">
                                         <label class="text-black font-w500">Contact (Phone Number)</label>
-                                        <input type="number" class="form-control" name="phone">
+                                        <input type="text" class="form-control" name="phone">
                                     </div>
 
                                     <div class="form-group">

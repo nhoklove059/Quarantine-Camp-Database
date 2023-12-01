@@ -142,18 +142,19 @@ include("includes/check.php");
 												<label class="custom-control-label" for="checkAll"></label>
 											</div>
 										</th>
-										<th>ATC</th>
-										<th>Medicine Name</th>
+										<th>Medication ID</th>
+										<th>Medication Detail</th>
+										<th>Effects</th>
+										<th>Price</th>
 										<th>Expiration Date</th>
-										<th>Effect</th>
+
 									</tr>
 								</thead>
 								<?php
-								$sql_medicine = "SELECT medicine.medicine_id, medicine.medicine_name, medicine.price, medicine.expiration_date, medicine_effect.effect FROM medicine INNER JOIN medicine_effect ON medicine.medicine_id = medicine_effect.medicine_id"; 
-								$result_medicine = mysqli_query($conn, $sql_medicine);
+								$sql_medicine = "SELECT * FROM medication"; 
+								$result_medicine = mysqli_query($conn1, $sql_medicine);
 								if (mysqli_num_rows($result_medicine) > 0) {
 										while($row_medicine = mysqli_fetch_assoc($result_medicine)) {
-										
 								?>
 								<tbody>
 									<tr>
@@ -163,18 +164,12 @@ include("includes/check.php");
 												<label class="custom-control-label" for="customCheckBox2"></label>
 											</div>
 										</td>
-										<!-- <td>
-											<img src="images/users/11.png" alt="" width="43">
-										</td> -->
-										<td><span class="text-nowrap"><?php echo "#ATC-". $row_medicine['medicine_id']; ?></span></td>
-										<td><span class="text-nowrap"><?php echo $row_medicine['medicine_name']; ?></span></td>
-										<td><?php echo $row_medicine['expiration_date']; ?></td>
-										<td><span class="text-nowrap"><?php echo $row_medicine['effect']; ?></span></td>
-										<!-- <td>
-											<a href="javascript:void(0)" class="btn btn-primary text-nowrap btn-sm light">5 Appointment</a>
-										</td> -->
-										<!-- <td><span class="text-nowrap">+12 4124 5125</span></td> -->
-										<!-- <td><span class="text-dark">Unavailable</span></td> -->
+										<td><span class="text-nowrap"><?php echo $row_medicine['medicationID']; ?></span></td>
+										<td><span class="text-nowrap"><?php echo $row_medicine['medicationDetail']; ?></span></td>
+										<td><?php echo $row_medicine['effects']; ?></td>
+										<td><span class="text-nowrap"><?php echo $row_medicine['price'] . " vnđ"; ?></span></td>
+										<td><span class="text-nowrap"><?php echo $row_medicine['expiration Date']; ?></span></td>
+
 										<td>
 											<div class="dropdown ml-auto text-right">
 												<div class="btn-link" data-toggle="dropdown">

@@ -482,7 +482,7 @@ if (isset($_GET['patientID'])) {
 																	<?php
 																} else {
 																	?>
-																		<td><span class="badge light badge-danger">Wait for test</span></td>
+																		<td><span class="badge light badge-warning">Wait for test</span></td>
 																	<?php
 																}
 																?>

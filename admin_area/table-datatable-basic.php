@@ -311,7 +311,7 @@ include("includes/header.php");
                                                                         href="test-covid.php?peopleID=<?php echo $row["patientID"]; ?>">Show
                                                                         all tests</a>
                                                                     <a class="dropdown-item"
-                                                                        href="report.php?patientID=<?php echo $row["patientID"]; ?>&prescription=">Prescription</a>
+                                                                        href="report.php?patientID=<?php echo $row["patientID"]; ?>&prescription=">Report</a>
                                                                     <a class="dropdown-item"
                                                                         href="patient-details.php?peopleID=<?php echo $row["patientID"]; ?>&discharge_from_hospital=">Discharge
                                                                         from hospital</a>

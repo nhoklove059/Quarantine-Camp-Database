@@ -6,76 +6,77 @@ include("includes/db.php");
 include("includes/header.php");
 
 ?>
+
 <body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
+	<!--*******************
+		Preloader start
+	********************-->
+	<div id="preloader">
+		<div class="sk-three-bounce">
+			<div class="sk-child sk-bounce1"></div>
+			<div class="sk-child sk-bounce2"></div>
+			<div class="sk-child sk-bounce3"></div>
+		</div>
+	</div>
+	<!--*******************
+		Preloader end
+	********************-->
 
-    <!--**********************************
-        Main wrapper start
-    ***********************************-->
-    <div id="main-wrapper">
+	<!--**********************************
+		Main wrapper start
+	***********************************-->
+	<div id="main-wrapper">
 
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-        <?php
+		<!--**********************************
+			Nav header start
+		***********************************-->
+		<?php
 
 		include("includes/navhead.php");
 
 		?>
-        <!--**********************************
-            Nav header end
-        ***********************************-->
-		
 		<!--**********************************
-            Chat box start
-        ***********************************-->
-		
+			Nav header end
+		***********************************-->
+
 		<!--**********************************
-            Chat box End
-        ***********************************-->
-		
+			Chat box start
+		***********************************-->
+
 		<!--**********************************
-            Header start
-        ***********************************-->
-        <?php
+			Chat box End
+		***********************************-->
+
+		<!--**********************************
+			Header start
+		***********************************-->
+		<?php
 
 		include("includes/main.php");
 
 		?>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
+		<!--**********************************
+			Header end ti-comment-alt
+		***********************************-->
 
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <?php
+		<!--**********************************
+			Sidebar start
+		***********************************-->
+		<?php
 
 		include("includes/sidebar.php");
 
 		?>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-		
 		<!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <!-- row -->
+			Sidebar end
+		***********************************-->
+
+		<!--**********************************
+			Content body start
+		***********************************-->
+		<div class="content-body">
+			<!-- row -->
 			<div class="container-fluid">
 				<div class="form-head d-flex mb-sm-4 mb-3">
 					<div class="mr-auto">
@@ -84,7 +85,8 @@ include("includes/header.php");
 					</div>
 					<div>
 						<!-- <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+New Bed</a> -->
-						<a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
+						<a href="index.html" class="btn btn-outline-primary"><i
+								class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
 					</div>
 				</div>
 				<!-- Add Order -->
@@ -113,7 +115,7 @@ include("includes/header.php");
 									<div class="form-group">
 										<label class="text-black font-w500">Result</label>
 										<input type="text" class="form-control">
-									</div> 
+									</div>
 									<div class="form-group">
 										<label class="text-black font-w500">Date Start</label>
 										<input type="date" class="form-control">
@@ -154,159 +156,157 @@ include("includes/header.php");
 									<tr>
 										<th>
 											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="checkAll" required="">
+												<input type="checkbox" class="custom-control-input" id="checkAll"
+													required="">
 												<label class="custom-control-label" for="checkAll"></label>
 											</div>
 										</th>
 										<th>Doctor ID</th>
 										<th>Patient ID</th>
-										<th>Result</th>
+										<th>Patient Name</th>
 										<th>Date Start</th>
 										<th>Date End</th>
+										<th>Result</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-												<label class="custom-control-label" for="customCheckBox2"></label>
-											</div>
-										</td>
-										<!-- <td>
-											<img src="images/users/11.png" alt="" width="43">
-										</td> -->
-										<td><span class="text-nowrap">#B-00001</span></td>
-										<td><span class="text-nowrap">#P-00017</span></td>
-										<td><span class="badge light badge-success">Recovered</span></td>
-										<td>26/06/2023</td>
-										<td>06/06/2024</td>
+									<?php
 
-										<!-- <td>
-											<a href="javascript:void(0)" class="btn btn-primary text-nowrap btn-sm light">5 Appointment</a>
-										</td> -->
-										<!-- <td><span class="text-nowrap">+12 4124 5125</span></td> -->
-										<!-- <td><span class="text-dark">Unavailable</span></td> -->
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">View Detail</a>
-													<a class="dropdown-item" href="#">Edit</a>
-													<a class="dropdown-item" href="#">Delete</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-												<label class="custom-control-label" for="customCheckBox2"></label>
-											</div>
-										</td>
-										<!-- <td>
-											<img src="images/users/11.png" alt="" width="43">
-										</td> -->
-										<td><span class="text-nowrap">#B-00002</span></td>
-										<td><span class="text-nowrap">#P-00007</span></td>
-										<td><span class="badge light badge-warning">In Treatment</span></td>
-										<td>07/06/2020</td>
-										<td>28/02/2024</td>
+									$sql = "SELECT * FROM  treatment t
+									INNER JOIN patient p ON p.peopleID = t.DoctorID
+									WHERE isDeleted = 0 AND doctorID = '" . $_SESSION['admin_id'] . "'";
 
-										<!-- <td>
-											<a href="javascript:void(0)" class="btn btn-primary text-nowrap btn-sm light">5 Appointment</a>
-										</td> -->
-										<!-- <td><span class="text-nowrap">+12 4124 5125</span></td> -->
-										<!-- <td><span class="text-dark">Unavailable</span></td> -->
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">View Detail</a>
-													<a class="dropdown-item" href="#">Edit</a>
-													<a class="dropdown-item" href="#">Delete</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									
+									$result = mysqli_query($conn1, $sql);
+
+									if (mysqli_num_rows($result) > 0) {
+										// output data of each row
+										while ($row = mysqli_fetch_assoc($result)) {
+											?>
+											<tr>
+												<td>
+													<div class="custom-control custom-checkbox">
+														<input type="checkbox" class="custom-control-input" id="customCheckBox2"
+															required="">
+														<label class="custom-control-label" for="customCheckBox2"></label>
+													</div>
+												</td>
+												<td><span class="text-nowrap">
+														<?php echo $row["DoctorID"] ?>
+													</span></td>
+												<td><span class="text-nowrap">
+														<?php echo $row["patientID"] ?>
+													</span></td>
+												<td><span class="text-nowrap">
+														<?php echo $row["fullName"] ?>
+													</span></td>
+												<td>
+													<?php echo $row["startDate"] ?>
+												</td>
+												<td>
+													<?php echo $row["endDate"] ?>
+												</td>
+												<td><span class="text-nowrap">
+														<?php echo $row["result"] ?>
+													</span></td>
+												<td>
+													<div class="dropdown ml-auto text-right">
+														<div class="btn-link" data-toggle="dropdown">
+															<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+																xmlns="http://www.w3.org/2000/svg">
+																<path
+																	d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z"
+																	stroke="#2E2E2E" stroke-width="2" stroke-linecap="round"
+																	stroke-linejoin="round" />
+																<path
+																	d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z"
+																	stroke="#2E2E2E" stroke-width="2" stroke-linecap="round"
+																	stroke-linejoin="round" />
+																<path
+																	d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z"
+																	stroke="#2E2E2E" stroke-width="2" stroke-linecap="round"
+																	stroke-linejoin="round" />
+															</svg>
+														</div>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a class="dropdown-item" href="#">View Detail</a>
+															<a class="dropdown-item" href="#">Edit</a>
+															<a class="dropdown-item" href="#">Delete</a>
+														</div>
+													</div>
+												</td>
+
+											</tr>
+											<?php
+										}
+									} else {
+										echo "0 results";
+									}
+									?>
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
-            </div>
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
+			</div>
+		</div>
+		<!--**********************************
+			Content body end
+		***********************************-->
 
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <?php
+		<!--**********************************
+			Footer start
+		***********************************-->
+		<?php
 
 		include("includes/footer.php");
 
 		?>
-        <!--**********************************
-            Footer end
-        ***********************************-->
+		<!--**********************************
+			Footer end
+		***********************************-->
 
 		<!--**********************************
-           Support ticket button start
-        ***********************************-->
+		   Support ticket button start
+		***********************************-->
 
-        <!--**********************************
-           Support ticket button end
-        ***********************************-->
+		<!--**********************************
+		   Support ticket button end
+		***********************************-->
 
 
-    </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
+	</div>
+	<!--**********************************
+		Main wrapper end
+	***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-    <script src="./vendor/global/global.min.js"></script>
+	<!--**********************************
+		Scripts
+	***********************************-->
+	<!-- Required vendors -->
+	<script src="./vendor/global/global.min.js"></script>
 	<script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 	<script src="./vendor/chart.js/Chart.bundle.min.js"></script>
-    <script src="./js/custom.min.js"></script>
+	<script src="./js/custom.min.js"></script>
 	<script src="./js/deznav-init.js"></script>
 
-    <!-- Datatable -->
-    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<!-- Datatable -->
+	<script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
 	<script>
-		(function($) {
+		(function ($) {
 			var table = $('#example5').DataTable({
 				searching: false,
-				paging:false,
+				paging: false,
 				select: false,
 				//info: false,         
-				lengthChange:false 
-				
+				lengthChange: false
+
 			});
 			$('#example tbody').on('click', 'tr', function () {
-				var data = table.row( this ).data();
-				
+				var data = table.row(this).data();
+
 			});
 		})(jQuery);
 	</script>
 </body>
+
 </html>

@@ -25,7 +25,7 @@
 							<span class="nav-text">Doctors</span>
 						</a>
                         <ul aria-expanded="false">
-							<li><a href="doctor.php">Doctors List</a></li>
+							<li><a href="doctor.php">Personnel List</a></li>
 							<li><a href="doctor-details.php">Doctor Details</a></li>
 							<li><a href="treatment.php">Treatment</a></li>
 						</ul>
@@ -36,7 +36,7 @@
 							<span class="nav-text">Place Management</span>
 						</a>
                         <ul aria-expanded="false">
-							<li><a href="bed-manage.php">Bed</a></li>
+							<li><a href="bed-manage.php">Room</a></li>
 							<!-- <li><a href="building.php?building=all">Building</a></li> -->
 						</ul>
                     </li>

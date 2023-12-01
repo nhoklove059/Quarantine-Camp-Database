@@ -69,7 +69,7 @@
       )
    </script>
    </sign-container>
-   
+
    <?php
    include("includes/db.php");
 
@@ -95,7 +95,7 @@
          if ($row_employee['password'] == md5($password)) {
             session_start();
             $_SESSION['admin_id'] = $row_employee['peopleID'];
-            $_SESSION['username'] = $row_employee['fullName'];
+            $_SESSION['username'] = $row_employee['username'];
             $_SESSION['admin_job'] = $row_employee['role'];
 
             echo "<script>window.open('index.php','_self')</script>";

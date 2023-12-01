@@ -156,7 +156,7 @@ INSERT INTO `patient` VALUES (34,'567','45','Male','64','2023-11-30 23:08:32',NU
 INSERT INTO `patient` VALUES (35,'0','0','Female','0','2023-11-30 23:10:51',NULL,'R2','D1','0');
 INSERT INTO `patient` VALUES (36,'9','9','Male','9','2023-11-30 23:11:07',NULL,'R3','D1','0');
 INSERT INTO `patient` VALUES (37,'3','3','Male','3','2023-11-30 23:12:14',NULL,'R3','D2','0');
-INSERT INTO `patient` VALUES (38,'3','3','Male','3','2023-11-30 23:18:29',NULL,'R3','D2','0');
+INSERT INTO `patient` VALUES (38,'3','3','Male','3','2023-11-30 23:18:29',NULL,'R3','D2','1');
 INSERT INTO `patient` VALUES (39,'555','55','Male','555','2023-11-30 23:18:53',NULL,'R2','D1','0');
 INSERT INTO `patient` VALUES (40,'66','7','Male','7','2023-11-30 23:21:19',NULL,'NULL','NULL','0');
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
@@ -221,17 +221,17 @@ CREATE TABLE `people` (
 
 LOCK TABLES `people` WRITE;
 /*!40000 ALTER TABLE `people` DISABLE KEYS */;
-INSERT INTO `people` VALUES ('D1','Doctor 1','Doctor',NULL,NULL);
-INSERT INTO `people` VALUES ('D2','Doctor 2','Doctor',NULL,NULL);
-INSERT INTO `people` VALUES ('M1','HUY','Manager','1','12345');
-INSERT INTO `people` VALUES ('N1','Nurse 1','Nurse',NULL,NULL);
-INSERT INTO `people` VALUES ('N2','Nurse 2','Nurse',NULL,NULL);
-INSERT INTO `people` VALUES ('NULL',NULL,NULL,NULL,NULL);
-INSERT INTO `people` VALUES ('S1','Staff 1','Staff',NULL,NULL);
-INSERT INTO `people` VALUES ('S2','Staff 2','Staff',NULL,NULL);
-INSERT INTO `people` VALUES ('V1','Volunteer 1','Volunteer',NULL,NULL);
-INSERT INTO `people` VALUES ('V2','Volunteer 2','Volunteer',NULL,NULL);
-INSERT INTO `people` VALUES ('V3','Volunteer 3','Volunteer',NULL,NULL);
+INSERT INTO `people` VALUES ('D1','Doctor 1','Doctor','doc1','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('D2','Doctor 2','Doctor','doc2','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('M1','HUY','Manager','1','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('N1','Nurse 1','Nurse','nur1','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('N2','Nurse 2','Nurse','nur2','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('NULL',NULL,NULL,NULL,'');
+INSERT INTO `people` VALUES ('S1','Staff 1','Staff','sta1','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('S2','Staff 2','Staff','sta2','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('V1','Volunteer 1','Volunteer','vol1','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('V2','Volunteer 2','Volunteer','vol2','827ccb0eea8a706c4c34a16891f84e7b');
+INSERT INTO `people` VALUES ('V3','Volunteer 3','Volunteer','vol3','827ccb0eea8a706c4c34a16891f84e7b');
 /*!40000 ALTER TABLE `people` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,6 +373,34 @@ INSERT INTO `testing_information` VALUES (7,'2023-09-07',0,NULL,1,'31','95%','19
 INSERT INTO `testing_information` VALUES (8,'2023-09-08',1,'30',0,NULL,'99%','17');
 INSERT INTO `testing_information` VALUES (9,'2023-09-09',0,NULL,1,'28','96%','20');
 INSERT INTO `testing_information` VALUES (10,'2023-09-10',1,'29',0,NULL,'94%','22');
+INSERT INTO `testing_information` VALUES (1,'2023-09-01',0,NULL,1,'23','10%','11');
+INSERT INTO `testing_information` VALUES (1,'2023-09-01',0,NULL,1,'23','10%','11');
+INSERT INTO `testing_information` VALUES (2,'2023-09-02',1,'28',0,NULL,'97%','16');
+INSERT INTO `testing_information` VALUES (3,'2023-09-03',1,'30',0,NULL,'20%','43');
+INSERT INTO `testing_information` VALUES (4,'2023-09-04',0,NULL,1,'30','93%','22');
+INSERT INTO `testing_information` VALUES (5,'2023-09-05',1,'25',1,'30','94%','22');
+INSERT INTO `testing_information` VALUES (6,'2023-09-06',1,'31',0,NULL,'89%','30');
+INSERT INTO `testing_information` VALUES (7,'2023-09-07',0,NULL,1,'28','96%','18');
+INSERT INTO `testing_information` VALUES (8,'2023-09-08',0,NULL,1,'27','98%','17');
+INSERT INTO `testing_information` VALUES (9,'2023-09-09',1,'35',0,NULL,'92%','25');
+INSERT INTO `testing_information` VALUES (10,'2023-09-10',1,'29',0,NULL,'96%','19');
+INSERT INTO `testing_information` VALUES (11,'2023-09-11',1,'32',1,'26','98%','15');
+INSERT INTO `testing_information` VALUES (12,'2023-09-12',0,NULL,1,'25','94%','24');
+INSERT INTO `testing_information` VALUES (13,'2023-09-13',0,NULL,1,'29','90%','28');
+INSERT INTO `testing_information` VALUES (14,'2023-09-14',1,'26',0,NULL,'91%','28');
+INSERT INTO `testing_information` VALUES (15,'2023-09-15',1,'27',0,NULL,'93%','21');
+INSERT INTO `testing_information` VALUES (23,'2023-09-23',1,'29',0,NULL,'95%','20');
+INSERT INTO `testing_information` VALUES (24,'2023-09-24',0,NULL,1,'28','92%','27');
+INSERT INTO `testing_information` VALUES (25,'2023-09-25',1,'26',0,NULL,'91%','28');
+INSERT INTO `testing_information` VALUES (26,'2023-09-26',0,NULL,1,'22','95%','20');
+INSERT INTO `testing_information` VALUES (31,'2023-09-01',0,NULL,1,'23','10%','11');
+INSERT INTO `testing_information` VALUES (34,'2023-09-04',0,NULL,1,'30','93%','22');
+INSERT INTO `testing_information` VALUES (35,'2023-09-05',1,'25',1,'30','94%','22');
+INSERT INTO `testing_information` VALUES (36,'2023-09-06',1,'31',0,NULL,'89%','30');
+INSERT INTO `testing_information` VALUES (37,'2023-09-07',0,NULL,1,'28','96%','18');
+INSERT INTO `testing_information` VALUES (38,'2023-09-08',0,NULL,1,'27','98%','17');
+INSERT INTO `testing_information` VALUES (39,'2023-09-09',1,'35',0,NULL,'92%','25');
+INSERT INTO `testing_information` VALUES (40,'2023-09-10',1,'29',0,NULL,'96%','19');
 /*!40000 ALTER TABLE `testing_information` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,4 +450,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-30 23:36:54
+-- Dump completed on 2023-12-01 16:23:38

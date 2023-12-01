@@ -82,7 +82,7 @@ if (isset($_GET['patientID'])) {
 											</div>
 											<a class="btn btn-outline-primary" data-toggle="modal"
 												data-target="#addOrderModal">Update Profile</a>
-											<a href="print.php?people_id=<?php echo $patient_id ?>"
+											<a href="report.php?patientID=<?php echo $patient_id ?>"
 												class="btn btn-primary btn-lg ml-2">Print</a>
 										</div>
 									</div>

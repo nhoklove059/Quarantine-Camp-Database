@@ -756,7 +756,7 @@ include("includes/header.php");
 			// Wait for a short delay to ensure the print dialog has appeared
 			setTimeout(function () {
 				// Go back to the patient-detail.php page
-				window.location.href = 'patient-details.php?people_id=' + <?php echo $patient_id; ?>;
+				window.location.href = 'patient-details.php?patientID=' + <?php echo $patient_id; ?>;
 			}, 1000); // Adjust the delay as needed
 		};
 	</script>

@@ -69,40 +69,50 @@
       )
    </script>
    </sign-container>
-
-
+   
    <?php
    include("includes/db.php");
 
    if (isset($_GET['admin_login'])) {
-      $admin_email = mysqli_real_escape_string($conn1, $_GET['username']);
+      $username = mysqli_real_escape_string($conn1, $_GET['username']);
+      $password = mysqli_real_escape_string($conn1, $_GET['password']);
 
-      $admin_pass = mysqli_real_escape_string($conn1, $_GET['password']);
+      // Use prepared statement to avoid SQL injection
+      $stmt = $conn1->prepare("SELECT * FROM `people` WHERE username=?");
+      $stmt->bind_param("s", $username);
 
-      //  $get_admin = "select * from `people_in_camp` where people_in_camp_id='$admin_email' AND password=md5('$admin_pass')";
-   
-      $get_admin = "select * from `people` where username='$admin_email' AND password='$admin_pass'";
-      $run_admin = mysqli_query($conn1, $get_admin);
+      // Execute the query
+      $stmt->execute();
 
-      $count = mysqli_num_rows($run_admin);
+      // Get the result
+      $result = $stmt->get_result();
 
-      $row_employee = mysqli_fetch_array($run_admin);
-      if ($count == 1) {
-         session_start();
-         $_SESSION['admin_id'] = $row_employee['peopleID'];
-         $_SESSION['admin_email'] = $row_employee['fullName'];
-         $_SESSION['admin_job'] = $row_employee['role'];
+      // Check if there is a matching record
+      if ($result->num_rows == 1) {
+         $row_employee = $result->fetch_assoc();
 
-         // echo "<script>alert('You are Logged in into admin panel')</script>";
-         echo "<script>window.open('index.php','_self')</script>";
-         //header("location: index.php");
+         // Verify the password using MD5
+         if ($row_employee['password'] == md5($password)) {
+            session_start();
+            $_SESSION['admin_id'] = $row_employee['peopleID'];
+            $_SESSION['username'] = $row_employee['fullName'];
+            $_SESSION['admin_job'] = $row_employee['role'];
+
+            echo "<script>window.open('index.php','_self')</script>";
+         } else {
+            echo "<script>alert('Password is incorrect')</script>";
+            echo "<script>window.open('login.php','_self')</script>";
+         }
       } else {
-         echo "<script>alert('Email or Password is Wrong')</script>";
+         echo "<script>alert('Username not found')</script>";
          echo "<script>window.open('login.php','_self')</script>";
-         //header("location: page-login.php");
       }
+
+      // Close the statement
+      $stmt->close();
    }
    ?>
+
 </body>
 
 </html>

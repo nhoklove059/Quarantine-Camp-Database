@@ -22,7 +22,7 @@ if (isset($_GET['patientID'])) {
 			<body>
 
 
-				
+
 				<div id="preloader">
 					<div class="sk-three-bounce">
 						<div class="sk-child sk-bounce1"></div>
@@ -30,28 +30,28 @@ if (isset($_GET['patientID'])) {
 						<div class="sk-child sk-bounce3"></div>
 					</div>
 				</div>
-				
+
 				<div id="main-wrapper">
 
-					
+
 					<?php
 
 					include("includes/navhead.php");
 
 					?>
-					
+
 					<?php
 
 					include("includes/main.php");
 
 					?>
-					
+
 					<?php
 
 					include("includes/sidebar.php");
 
 					?>
-					
+
 					<div class="content-body">
 						<div class="container-fluid">
 							<div class="row">
@@ -101,17 +101,17 @@ if (isset($_GET['patientID'])) {
 										<div class="modal-body">
 											<form action="update_patient.php?" method="get">
 
-												<input type="hidden" name="patientID" value="' . $patient_id .'">
+												<input type="hidden" name="patientID" value="' . $patient_id . '">
 
 												<div class="form-group">
 													<label class="text-black font-w500" name="name">Patient Name</label>
 													<input type="text" class="form-control" name="fullname"
-														value="' . $row["fullName"] .'"><br>
+														value="' . $row["fullName"] . '"><br>
 													<br><label class="text-black font-w500" name="gender">Gender</label>
 													<select class="form-control" type="text" name="gender">
 														<option selected>Choose Gender ...</option>
-														<option value="Male" ' . ($row["gender"] == "Male" ? "selected" : "") .'>Male</option>
-														<option value="Female" ' . ($row["gender"] == "Female" ? "selected" : "") .'>Female</option>
+														<option value="Male" ' . ($row["gender"] == "Male" ? "selected" : "") . '>Male</option>
+														<option value="Female" ' . ($row["gender"] == "Female" ? "selected" : "") . '>Female</option>
 													</select>
 												</div>
 										
@@ -154,12 +154,12 @@ if (isset($_GET['patientID'])) {
 
 												<div class="form-group">
 													<label class="text-black font-w500">Contact (Phone Number)</label>
-													<input type="text" class="form-control" name="phone" value="'. $row["phone"] .'">
+													<input type="text" class="form-control" name="phone" value="' . $row["phone"] . '">
 												</div>
 
 												<div class="form-group">
 													<label class="text-black font-w500">Address</label>
-													<input type="text" class="form-control" name="address" value="'. $row["address"] .'">
+													<input type="text" class="form-control" name="address" value="' . $row["address"] . '">
 												</div>
 
 												<div class="form-group">
@@ -169,7 +169,7 @@ if (isset($_GET['patientID'])) {
 											</form>
 										</div>
 										'
-										?>
+											?>
 									</div>
 								</div>
 							</div>
@@ -438,12 +438,14 @@ if (isset($_GET['patientID'])) {
 											<table id="example4" class="display min-w850">
 												<thead>
 													<tr>
-														<th>Test ID</th>
+														<th>Test Number</th>
 														<th>Patient</th>
 														<th>Test Date</th>
 														<th>Status</th>
 														<th>PCR Test</th>
+														<th>PCR Value</th>
 														<th>Quick Test</th>
+														<th>Quick Test Value</th>
 														<th>SP02</th>
 														<th>Respiratory rate</th>
 													</tr>
@@ -454,12 +456,13 @@ if (isset($_GET['patientID'])) {
 															WHERE t.patientID = " . $patient_id;
 												$result_test = mysqli_query($conn1, $sql_test);
 												if (mysqli_num_rows($result_test) > 0) {
+													$i = 1;
 													while ($row_test = mysqli_fetch_assoc($result_test)) {
 														?>
 														<tbody>
 															<tr>
 																<td>
-																	<?php echo $row_test['patientID'] ?>
+																	<?php echo $i++ ?>
 																</td>
 																<td>
 																	<?php echo $row['fullName']; ?>
@@ -467,8 +470,8 @@ if (isset($_GET['patientID'])) {
 																<td>
 																	<?php echo $row_test['testTime'] ?>
 																</td>
-																<?php
 
+																<?php
 																if ($row_test['SPO2_percentage'] < 96 && $row_test['Respiratory_rate'] > 20) {
 																	?>
 																	<td><span class="badge light badge-danger">Warning</span></td>
@@ -487,12 +490,23 @@ if (isset($_GET['patientID'])) {
 																<td><span class="text-dark">
 																		<?php echo $row_test['PCR_test_result'] == 1 ? "Positive" : "Negative"; ?>
 																	</span></td>
+
+																<td><span class="text-dark">
+																		<?php echo $row_test['PCR_test_value'] == "" ? "None" : $row_test['PCR_test_value']  ?>
+																	</span></td>
+
 																<td><span class="text-dark">
 																		<?php echo $row_test['quick_test_result'] == 1 ? "Positive" : "Negative"; ?>
 																	</span></td>
+
 																<td><span class="text-dark">
-																		<?php echo $row_test['SPO2_percentage']; ?>%
+																		<?php echo $row_test['quick_test_value'] == "" ? "None" : $row_test['quick_test_value'] ?>
 																	</span></td>
+
+																<td><span class="text-dark">
+																		<?php echo $row_test['SPO2_percentage']; ?>
+																	</span></td>
+
 																<td><span class="text-dark">
 																		<?php echo $row_test['Respiratory_rate']; ?> bpm
 																	</span></td>
@@ -524,8 +538,8 @@ if (isset($_GET['patientID'])) {
 												</thead>
 												<?php
 												$sql_treatment = "SELECT * FROM `treatment`
-							INNER JOIN people ON treatment.DoctorID = people.peopleID
-							INNER JOIN patient ON `treatment`.`patientID` = `patient`.`patientID` WHERE treatment.patientID =" . $patient_id;
+																				INNER JOIN people ON treatment.DoctorID = people.peopleID
+																				INNER JOIN patient ON `treatment`.`patientID` = `patient`.`patientID` WHERE treatment.patientID =" . $patient_id;
 												$result_treatment = mysqli_query($conn1, $sql_treatment);
 												if (mysqli_num_rows($result_treatment) > 0) {
 													while ($row_treatment = mysqli_fetch_assoc($result_treatment)) {

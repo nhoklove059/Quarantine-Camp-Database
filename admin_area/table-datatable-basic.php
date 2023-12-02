@@ -184,7 +184,7 @@ include("includes/header.php");
                                             if (isset($_GET['status'])) {
                                                 switch ($_GET['status']) {
                                                     case 'all':
-                                                        $sql = "SELECT * FROM patient WHERE isDeleted = 0 OR isDeleted is NULL";
+                                                        $sql = "SELECT * FROM patient WHERE isDeleted = 0";
                                                         break;
 
                                                     case 'being_treatment':

@@ -597,6 +597,67 @@ if (isset($_GET['patientID'])) {
 									</div>
 								</div>
 							</div>
+
+							<div class="col-12">
+								<div class="card">
+									<div class="card-header">
+										<h4 class="card-title">Location History</h4>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+											<table id="example4" class="display min-w850">
+												<thead>
+													<tr>
+														<th>Patient</th>
+														<th>Date Start</th>
+														<th>Date End</th>
+														<th>Room</th>
+													</tr>
+												</thead>
+												<?php
+												$sql_location = "SELECT * FROM patient_location_history plh
+												INNER JOIN patient ON plh.patientID = patient.patientID WHERE plh.patientID =" . $patient_id;
+												$result_location = mysqli_query($conn1, $sql_location);
+												if (mysqli_num_rows($result_location) > 0) {
+													while ($row_location = mysqli_fetch_assoc($result_location)) {
+														?>
+														<tbody>
+															<tr>
+																
+																<td><span class="text-nowrap">
+																		<?php echo $row_location['fullName']; ?>
+																	</span></td>
+																<!-- <td><span class="badge light badge-success">Recovered</span></td> -->
+																<td>
+																	<?php echo $row_location['entryDateTime']; ?>
+																</td>
+																<td>
+																	<?php if ($row_location['exitDateTime'] == "") {
+																		echo "Unknown";
+																	} else {
+																		echo $row_location['exitDateTime'];
+																	}
+																	?>
+																</td>
+																<td>
+																	<?php echo $row_location['roomNumber']; ?>
+																</td>
+															</tr>
+															<!-- <tr>
+											<td><span class="text-nowrap">#B-00002</span></td>
+											<td><span class="text-nowrap">#P-00007</span></td>
+											<td><span class="badge light badge-warning">In Treatment</span></td>
+											<td>07/06/2020</td>
+											<td>28/02/2024</td>
+										</tr> -->
+														</tbody>
+													<?php }
+												} ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

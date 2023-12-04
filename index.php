@@ -37,8 +37,8 @@ include("includes/main.php");
                               <div class="col-md-8">
                                  <div class="photog">
                                     <h1>Care early<br>Coronavirus</h1>
-                                    <a class="read_more" href="javascript:void(0)" >Read More</a>
-                                    <a class="read_more" href="about.php" >About Us</a>
+                                    <a class="read_more" href="#" >Read More</a>
+                                    <a class="read_more" href="#" >About Us</a>
                                  </div>
                               </div>
                            </div>
@@ -53,8 +53,8 @@ include("includes/main.php");
                               <div class="col-md-8">
                                 <div class="photog">
                                     <h1>Care early<br>Coronavirus</h1>
-                                    <a class="read_more" href="javascript:void(0)" >Read More</a>
-                                    <a class="read_more" href="about.php" >About Us</a>
+                                    <a class="read_more" href="#" >Read More</a>
+                                    <a class="read_more" href="#" >About Us</a>
                                  </div>
                               </div>
                            </div>
@@ -69,8 +69,8 @@ include("includes/main.php");
                               <div class="col-md-8">
                                 <div class="photog">
                                     <h1>Care early<br>Coronavirus</h1>
-                                    <a class="read_more" href="javascript:void(0)" >Read More</a>
-                                    <a class="read_more" href="about.php" >About Us</a>
+                                    <a class="read_more" href="#" >Read More</a>
+                                    <a class="read_more" href="#" >About Us</a>
                                  </div>
                               </div>
                            </div>
@@ -100,7 +100,7 @@ include("includes/main.php");
                      <h2>About Corona Virus </h2>
                      <p>English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for
                      </p>
-                     <a class="read_more" href="about.php">About More</a>
+                     <a class="read_more" href="#">About More</a>
                   </div>
                </div>
                <div class="col-md-5">
@@ -127,7 +127,7 @@ include("includes/main.php");
                      <h2>Coronavirus what it is?</h2>
                      <p>when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
                      </p>
-                     <a class="read_more" href="coronata.php">About More</a>
+                     <a class="read_more" href="#">About More</a>
                   </div>
                </div>
             </div>
@@ -161,7 +161,7 @@ include("includes/main.php");
                            <h3> Wear Mask</h3>
                            <span> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for</span>
                           </div>
-                           <a class="read_more" href="protect.php">Read More</a>
+                           <a class="read_more" href="#">Read More</a>
                         </div>
                      </div>
                      <div class="item">
@@ -171,7 +171,7 @@ include("includes/main.php");
                            <h3> Wash Your Hands</h3>
                            <span> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for</span>
                           </div>
-                           <a class="read_more" href="protect.php">Read More</a>
+                           <a class="read_more" href="#">Read More</a>
                         </div>
                      </div>
                      <div class="item">
@@ -181,7 +181,7 @@ include("includes/main.php");
                            <h3> Stay at Home</h3>
                            <span> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for</span>
                           </div>
-                           <a class="read_more" href="protect.php">Read More</a>
+                           <a class="read_more" href="#">Read More</a>
                         </div>
                      </div>
                   </div>
@@ -207,7 +207,7 @@ include("includes/main.php");
                <div class=" col-md-4">
                   <div class="latest text_align_center">
                      <figure><img src="images/cases1.png" alt="#"/></figure>
-                      <a class="read_more" href="cases.php">Read More</a>
+                      <a class="read_more" href="#">Read More</a>
                      <div class="nostrud">
                         <h3>Cases 01</h3>
                         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
@@ -217,7 +217,7 @@ include("includes/main.php");
                <div class=" col-md-4">
                   <div class="latest text_align_center">
                      <figure><img src="images/cases2.png" alt="#"/></figure>
-                      <a class="read_more" href="cases.php">Read More</a>
+                      <a class="read_more" href="#">Read More</a>
                      <div class="nostrud">
                         <h3>Cases 02</h3>
                         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
@@ -227,7 +227,7 @@ include("includes/main.php");
                <div class=" col-md-4">
                   <div class="latest text_align_center">
                      <figure><img src="images/cases3.png" alt="#"/></figure>
-                      <a class="read_more" href="cases.php">Read More</a>
+                      <a class="read_more" href="#">Read More</a>
                      <div class="nostrud">
                         <h3>Cases 03</h3>
                         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
@@ -306,11 +306,11 @@ include("includes/main.php");
                               <h3>Resources</h3>
                               <ul class="menu_footer">
                                  <li><a href="index.php">Home</a><li>
-                                 <li><a href="javascript:void(0)">What we do</a><li>
-                                 <li> <a href="javascript:void(0)">Media</a><li>
-                                 <li> <a href="javascript:void(0)">Travel Advice</a><li>
-                                 <li><a href="javascript:void(0)">Protection</a><li>
-                                 <li><a href="javascript:void(0)">Care</a><li>
+                                 <li><a href="#">What we do</a><li>
+                                 <li> <a href="#">Media</a><li>
+                                 <li> <a href="#">Travel Advice</a><li>
+                                 <li><a href="#">Protection</a><li>
+                                 <li><a href="#">Care</a><li>
                               </ul>
                              
            
@@ -336,7 +336,7 @@ include("includes/main.php");
                            Call : +01 1234567890
                         </li>
                         <li><i class="fa fa-envelope" aria-hidden="true"></i>
-                           <a href="Javascript:void(0)">Email : demo@gmail.com</a>
+                           <a href="#">Email : demo@gmail.com</a>
                         </li>
                      </ul>
                             
@@ -358,7 +358,7 @@ include("includes/main.php");
                <div class="container">
                   <div class="row">
                      <div class="col-md-8 offset-md-2">
-                        <p>© 2022 Design by <a href=""> SGU</a></p>
+                        <p>© 2022 Design by <a href="#"> SGU</a></p>
                      </div>
                   </div>
                </div>

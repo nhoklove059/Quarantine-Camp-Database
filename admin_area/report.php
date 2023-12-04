@@ -127,20 +127,20 @@ if (isset($_GET['patientID'])) {
 										<div>Email: thomas@mail.com</div>
 										<div>Phone: +78 123 456 7891</div>
 									</div> -->
-									<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4">
+									<!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-4">
 										<div class="row align-items-center">
 											<div class="col-sm-9">
 												<div class="brand-logo mb-3">
 													<img class="logo-abbr" src="./images/lucle.jpg" alt="">
-													<!-- <img class="logo-compact" src="./images/lucle.jpg" alt=""> -->
+													
 												</div>
 												<span>Case ID: ABCD123<strong class="d-block">Age: 40</strong>
 													<strong>Gender: Male</strong></span><br>
-												<!-- <small class="text-muted">Current exchange rate 1BTC = $6590 USD</small> -->
+												
 											</div>
-											<!-- <div class="col-sm-3 mt-3"> <img src="images/SGU.png" class="img-fluid width110"> </div> -->
+											
 										</div>
-									</div>
+									</div> -->
 									<br><br><br><br>
 									<div class="table-responsive">
 										<table id="example3" class="table table-striped table-responsive-md">

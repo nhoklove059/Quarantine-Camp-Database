@@ -46,7 +46,7 @@
 							<span class="nav-text">Medicine</span>
 						</a>
 					</li>
-					<li>
+					<!-- <li>
                         <a href="test-covid.php" class="ai-icon" aria-expanded="false">
 							<i class="flaticon-381-search-2"></i>
 							<span class="nav-text">Test Result</span>
@@ -56,7 +56,7 @@
 							<i class="flaticon-381-notepad"></i>
 							<span class="nav-text">Reviews</span>
 						</a>
-					</li>
+					</li> -->
                 </ul>
 				
 				<!-- <div class="copyright">

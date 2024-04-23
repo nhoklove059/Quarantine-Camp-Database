@@ -1,4 +1,4 @@
-# 1 QUARANTINE CAMP DATABASE
+# QUARANTINE CAMP DATABASE
 Due to the Covid-19 outbreak, a quarantine camp has been set up to isolate and 
 monitor people under investigation for 21 days. Those people admitted to the 
 quarantine camp are called “patient”. The camp stores patient information including 
